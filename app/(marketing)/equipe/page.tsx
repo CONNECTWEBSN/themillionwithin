@@ -124,7 +124,7 @@ export default function EquipePage() {
 
       {/* ─── ÉQUIPE ────────────────────────────────────────────── */}
       <ScrollReveal variant="fadeUp">
-        <section className="py-20 md:py-28 bg-[#F8F5F2]" aria-labelledby="team-title">
+        <section className="py-20 md:py-28 bg-neutral-50" aria-labelledby="team-title">
           <div className="container mx-auto px-5">
             <div className="text-center mb-16">
               <Badge variant="brand" className="mb-4">L&apos;équipe</Badge>

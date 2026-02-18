@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowRight, Star, Filter, Quote } from 'lucide-react';
+import { ArrowRight, Star, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { VideoCard } from '@/components/ui/VideoCard';
@@ -14,20 +14,6 @@ import testimonials from '@/content/testimonials.json';
 const ALL_COUNTRIES = ['Tous', ...Array.from(new Set(testimonials.map((t) => t.country)))];
 const ALL_BUSINESS = ['Tous', ...Array.from(new Set(testimonials.map((t) => t.businessType)))];
 
-const FEATURED_QUOTES = [
-  {
-    quote: "Cette formation a transformé ma vie. En 5 jours, j'ai lancé mon business et je génère maintenant un revenu stable tout en étant présente pour mes enfants.",
-    name: "Ramatoulaye Wade",
-    country: "Canada",
-    flag: "🇨🇦",
-  },
-  {
-    quote: "Nous croyons qu'aucune femme ne devrait avoir à choisir entre sa famille et ses rêves. Cette formation m'a prouvé que c'est possible.",
-    name: "Dior Diagne",
-    country: "Sénégal",
-    flag: "🇸🇳",
-  },
-];
 
 export default function TemoignagesPage() {
   const [activeCountry, setActiveCountry] = useState('Tous');
@@ -62,7 +48,7 @@ export default function TemoignagesPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { value: 496, suffix: '+', label: 'Femmes formées' },
-              { value: 38, suffix: '+', label: 'Vidéos témoignages' },
+              { value: 21, suffix: '+', label: 'Vidéos témoignages' },
               { value: 10, suffix: '', label: 'Pays représentés' },
               { value: 5, suffix: '.0', label: 'Note moyenne ★' },
             ].map((s, i) => (
@@ -77,38 +63,6 @@ export default function TemoignagesPage() {
         </div>
       </section>
 
-      {/* ─── CITATIONS VEDETTES ────────────────────────────────── */}
-      <section className="py-16 bg-[#FFF4E8]" aria-label="Citations phares">
-        <div className="container mx-auto px-5">
-          <div className="grid md:grid-cols-2 gap-6">
-            {FEATURED_QUOTES.map((q, i) => (
-              <div
-                key={i}
-                className="relative p-8 rounded-3xl bg-white border border-primary-100 shadow-sm overflow-hidden"
-              >
-                <Quote className="absolute top-6 left-6 w-8 h-8 text-primary-100" aria-hidden />
-                <div className="flex gap-0.5 mb-4">
-                  {[1,2,3,4,5].map((s) => (
-                    <Star key={s} className="w-4 h-4 fill-gold-400 text-gold-400" aria-hidden />
-                  ))}
-                </div>
-                <blockquote className="text-neutral-800 text-lg font-medium leading-relaxed mb-6">
-                  &ldquo;{q.quote}&rdquo;
-                </blockquote>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary-500/20 flex items-center justify-center">
-                    <span className="font-bold text-primary-700">{q.name.charAt(0)}</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-neutral-900 text-sm">{q.name}</p>
-                    <p className="text-neutral-500 text-xs">{q.flag} {q.country}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ─── FILTRES + GRILLE ──────────────────────────────────── */}
       <section className="py-16 md:py-24 bg-white" aria-labelledby="testimonials-grid-title">
@@ -176,7 +130,7 @@ export default function TemoignagesPage() {
                   countryFlag={t.countryFlag}
                   quote={t.quote}
                   businessType={t.businessType}
-                  thumbnailUrl={t.thumbnailUrl}
+                  thumbnailUrl={t.thumbnailUrl || undefined}
                   videoUrl={t.videoUrl || undefined}
                   rating={t.rating}
                   featured={i === 0}

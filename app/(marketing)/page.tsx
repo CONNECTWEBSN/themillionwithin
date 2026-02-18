@@ -225,13 +225,14 @@ export default function HomePage() {
 
             {/* CTA centré */}
             <div className="text-center mt-12">
-              <Link
+              <Button
                 href="/formation"
-                className="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors group"
+                variant="link"
+                icon={<ArrowRight className="w-4 h-4" />}
+                iconPosition="right"
               >
                 Découvrir le programme complet
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden />
-              </Link>
+              </Button>
             </div>
           </div>
         </section>

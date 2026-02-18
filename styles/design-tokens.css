@@ -287,12 +287,3 @@
   --stat-label-color: var(--text-muted);
 }
 
-@keyframes pulse-brand {
-  0%, 100% { box-shadow: 0 0 0 0 rgb(249 115 22 / 0.4); }
-  50%      { box-shadow: 0 0 0 12px rgb(249 115 22 / 0); }
-}
-
-@keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}

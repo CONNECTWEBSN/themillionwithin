@@ -203,9 +203,7 @@ export const TEAM_MEMBERS = [
     role: 'C.E.O — Formatrice',
     image: '/images/team/Mme Sall Ceo formatrice.png',
     featured: true,
-    socials: {
-      whatsapp: 'https://api.whatsapp.com/send?phone=12812031065',
-    },
+    socials: {},
   },
   {
     id: 'dieng-anna',

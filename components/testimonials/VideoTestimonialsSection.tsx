@@ -15,8 +15,7 @@ import type { VideoData } from './VideoCard';
 const testimonials: VideoData[] = [
   {
     id: 1,
-    videoUrl:
-      'https://d1yei2z3i6k35z.cloudfront.net/832931/672ba2b44a1cd_temoignageTMWRomatoulayeWade.mp4',
+    videoUrl: '/videos/Ramatoulaye Wade (canada).mp4',
     thumbnail: '/images/testimonials/ramatoulaye-wade.jpg',
     duration: '1:47',
     stars: 5,
@@ -30,8 +29,7 @@ const testimonials: VideoData[] = [
   },
   {
     id: 2,
-    videoUrl:
-      'https://d1yei2z3i6k35z.cloudfront.net/832931/67292a5c05d6e_22.mp4',
+    videoUrl: '/videos/Ramatoulaye Séck (France).mp4',
     thumbnail: '/images/testimonials/ramatoulaye-seck.jpg',
     duration: '2:34',
     stars: 5,
@@ -45,8 +43,7 @@ const testimonials: VideoData[] = [
   },
   {
     id: 3,
-    videoUrl:
-      'https://d1yei2z3i6k35z.cloudfront.net/832931/672b94e5b8da9_temoignageDIORDIAGNETMWS01.mp4.mp4',
+    videoUrl: '/videos/Dior Diagne (Sénégal).mp4',
     thumbnail: '/images/testimonials/dior-diagne.jpg',
     duration: '2:11',
     stars: 5,
@@ -68,7 +65,7 @@ export function VideoTestimonialsSection() {
   return (
     <>
       <section
-        className="py-20 lg:py-28 bg-orange-50 relative overflow-hidden"
+        className="py-20 lg:py-28 bg-primary-25 relative overflow-hidden"
         aria-labelledby="video-testimonials-title"
       >
         <GradientBackground variant="section" showBlobs={false} showPattern />

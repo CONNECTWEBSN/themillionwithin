@@ -103,7 +103,7 @@ export default function TarifsPage() {
       </section>
 
       {/* ─── CARTES TARIFS ─────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-[#F8F5F2]" aria-labelledby="pricing-title">
+      <section className="py-16 md:py-24 bg-neutral-50" aria-labelledby="pricing-title">
         <div className="container mx-auto px-5">
           <div className="text-center mb-12">
             <h2 id="pricing-title" className="text-h1 text-neutral-900">

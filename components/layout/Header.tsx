@@ -47,8 +47,8 @@ export function Header({ variant = 'default' }: HeaderProps) {
 
   return (
     <>
-      {/* Barre d'annonce */}
-      <div className="bg-gradient-to-r from-primary-600 via-primary-500 to-gold-500 text-white text-xs md:text-sm py-2 text-center font-medium">
+      {/* Barre d'annonce — scrolle avec la page */}
+      <div className="bg-gradient-to-r from-primary-600 via-primary-500 to-gold-500 text-white text-xs md:text-sm py-2.5 text-center font-medium relative z-[201]">
         <span className="flex items-center justify-center gap-2">
           <Sparkles className="w-3.5 h-3.5 shrink-0" aria-hidden />
           🚀 Prochaine session : <strong>14 Avril 2026</strong> — Places limitées !{' '}
@@ -61,7 +61,7 @@ export function Header({ variant = 'default' }: HeaderProps) {
       <header
         className={cn(
           'sticky top-0 z-[200] transition-all duration-300',
-          'h-16 md:h-20 bg-white/90 backdrop-blur-md',
+          'h-16 md:h-20 bg-white/95 backdrop-blur-md',
           scrolled && 'shadow-md border-b border-neutral-100',
         )}
       >

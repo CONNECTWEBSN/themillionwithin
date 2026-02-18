@@ -18,7 +18,7 @@ export function TopBar({ className }: TopBarProps) {
   return (
     <div
       className={cn(
-        'sticky top-0 z-50 flex h-9 items-center justify-center bg-orange-500 px-4 text-white',
+        'flex h-9 items-center justify-center bg-orange-500 px-4 text-white',
         className,
       )}
       role="banner"

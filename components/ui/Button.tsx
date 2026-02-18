@@ -41,14 +41,14 @@ const VARIANTS: Record<ButtonVariant, string> = {
   'outline-dark': 'bg-transparent text-white border-white/60 hover:bg-white/10 hover:border-white/90',
   ghost: 'bg-transparent text-neutral-700 border-transparent hover:bg-neutral-100 hover:text-neutral-900',
   link: 'bg-transparent text-primary-600 border-transparent underline-offset-4 hover:underline hover:text-primary-700 px-0 h-auto active:scale-100',
-  cta: 'bg-primary-500 text-white border-primary-500 font-bold shadow-brand-md animate-pulse-brand hover:bg-primary-600 hover:shadow-brand-lg hover:-translate-y-0.5 hover:[animation-play-state:paused]',
+  cta: 'bg-primary-500 text-white border-primary-500 font-bold shadow-brand-lg hover:bg-primary-600 hover:shadow-brand-xl hover:-translate-y-0.5',
 };
 
 const SIZES: Record<ButtonSize, string> = {
-  xs: 'h-8 px-3 text-xs rounded-lg gap-1.5',
+  xs: 'h-8 px-3 text-xs rounded-xl gap-1.5',
   sm: 'h-9 px-4 text-sm rounded-xl gap-1.5',
   md: 'h-11 px-6 text-base rounded-xl gap-2',
-  lg: 'h-[52px] px-8 text-lg rounded-2xl gap-2',
+  lg: 'h-[52px] px-8 text-lg rounded-xl gap-2',
   xl: 'h-[60px] px-10 text-xl rounded-2xl gap-2.5',
 };
 

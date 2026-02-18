@@ -7,7 +7,7 @@ import { ABOUT } from '@/lib/constants';
 export function AboutSection() {
   return (
     <section
-      className="py-20 lg:py-28 bg-orange-50 relative overflow-hidden"
+      className="py-20 lg:py-28 bg-primary-25 relative overflow-hidden"
       aria-labelledby="about-title"
     >
       {/* Accent décoratif supérieur */}

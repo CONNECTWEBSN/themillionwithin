@@ -1,10 +1,9 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import Link from 'next/link';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { SITE } from '@/lib/constants';
+import { Button } from '@/components/ui/Button';
 
 /* ─── DONNÉES DES SLIDES ───────────────────────────────────────── */
 
@@ -139,22 +138,26 @@ export function HeroSlider() {
           {/* Boutons CTA */}
           <div
             key={`cta-${current}`}
-            className="flex flex-wrap items-center gap-5 animate-[fade-up_0.65s_ease_0.3s_both]"
+            className="flex flex-wrap items-center gap-4 animate-[fade-up_0.65s_ease_0.3s_both]"
           >
-            <Link
+            <Button
               href="/inscription"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary-500 text-white font-semibold text-sm uppercase tracking-wide hover:bg-white hover:text-primary-600 hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200"
+              variant="cta"
+              size="lg"
+              icon={<ArrowRight className="w-4 h-4" />}
+              iconPosition="right"
             >
               Nous contacter
-              <ArrowRight className="w-3.5 h-3.5" aria-hidden />
-            </Link>
-            <Link
+            </Button>
+            <Button
               href="/inscription"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-white/30 text-white font-medium text-sm uppercase tracking-wide hover:border-white hover:bg-white hover:text-neutral-900 hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200"
+              variant="outline-dark"
+              size="lg"
+              icon={<ArrowRight className="w-4 h-4" />}
+              iconPosition="right"
             >
               S&apos;inscrire
-              <ArrowRight className="w-3.5 h-3.5" aria-hidden />
-            </Link>
+            </Button>
           </div>
         </div>
       </div>

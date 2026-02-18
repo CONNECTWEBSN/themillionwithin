@@ -161,7 +161,7 @@ export default function FormationPage() {
 
       {/* ─── CE QUE VOUS ALLEZ APPRENDRE ──────────────────────── */}
       <ScrollReveal variant="fadeUp">
-        <section className="py-20 md:py-28 bg-[#F8F5F2]" aria-labelledby="learn-title">
+        <section className="py-20 md:py-28 bg-neutral-50" aria-labelledby="learn-title">
           <div className="container mx-auto px-5">
             <div className="text-center mb-14">
               <Badge variant="brand" className="mb-4">Ce que vous apprendrez</Badge>

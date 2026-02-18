@@ -53,7 +53,7 @@ export function FloatingCTA({
           'text-white font-bold text-sm shadow-brand-lg',
           'hover:shadow-brand-xl hover:scale-105 active:scale-95',
           'transition-all duration-200',
-          'animate-pulse-brand',
+          'shadow-brand-lg',
         )}
         aria-label={label}
       >

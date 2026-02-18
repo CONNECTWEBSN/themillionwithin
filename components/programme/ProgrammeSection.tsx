@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
 import { ScrollReveal } from '@/components/shared/ScrollReveal';
 import { ProgrammeStep } from './ProgrammeStep';
 import { PROGRAMME_STEPS } from './data';
@@ -14,7 +14,7 @@ export function ProgrammeSection() {
 
   return (
     <section
-      className="py-24 lg:py-32 bg-[#FAFAF8] relative overflow-hidden"
+      className="py-24 lg:py-32 bg-neutral-50 relative overflow-hidden"
       aria-labelledby="programme-title"
     >
       {/* Décoration de fond */}
@@ -102,13 +102,15 @@ export function ProgrammeSection() {
         {/* CTA */}
         <ScrollReveal variant="fadeUp" delay={0.5}>
           <div className="text-center mt-14">
-            <Link
+            <Button
               href="/formation"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-all duration-200 shadow-lg shadow-primary-500/20 hover:shadow-xl hover:-translate-y-0.5"
+              variant="primary"
+              size="lg"
+              icon={<ArrowRight className="w-4 h-4" />}
+              iconPosition="right"
             >
               Découvrir le programme complet
-              <ArrowRight className="w-4 h-4" aria-hidden />
-            </Link>
+            </Button>
           </div>
         </ScrollReveal>
       </div>

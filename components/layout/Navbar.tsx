@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -17,24 +17,14 @@ interface NavbarProps {
 }
 
 export function Navbar({ className }: NavbarProps) {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  /* Shadow au scroll */
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    handleScroll(); // état initial
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <>
       <header
         className={cn(
-          'sticky top-0 z-40 flex h-[88px] items-center bg-white transition-shadow duration-300',
-          scrolled && 'shadow-[0_1px_3px_rgba(0,0,0,0.08)]',
+          'flex h-[88px] items-center bg-white transition-shadow duration-300',
           className,
         )}
       >

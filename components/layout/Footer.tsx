@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, MapPin, Mail } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
 import { SITE, NAV_LINKS, LEGAL_LINKS, SOCIAL_LINKS } from '@/lib/constants';
 
 interface FooterProps {
@@ -84,13 +85,16 @@ export function Footer({ variant = 'default' }: FooterProps) {
             </p>
             <p className="text-white/80 text-sm mt-1">Prochaine session limitée — Places qui se remplissent vite</p>
           </div>
-          <Link
+          <Button
             href="/inscription"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white text-primary-700 font-bold hover:bg-white/90 transition-colors shadow-lg whitespace-nowrap"
+            variant="gold"
+            size="lg"
+            icon={<ArrowRight className="w-4 h-4" />}
+            iconPosition="right"
+            className="bg-white text-primary-700 border-white hover:bg-white/90"
           >
             Réserver ma place maintenant
-            <ArrowRight className="w-4 h-4" aria-hidden />
-          </Link>
+          </Button>
         </div>
       </div>
 
@@ -110,7 +114,7 @@ export function Footer({ variant = 'default' }: FooterProps) {
               />
             </Link>
 
-            <p className="text-white text-sm leading-relaxed mb-6 max-w-xs">
+            <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-xs">
               {SITE.tagline}. Depuis 2014, nous accompagnons les femmes entrepreneures africaines.
             </p>
 
@@ -138,7 +142,7 @@ export function Footer({ variant = 'default' }: FooterProps) {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/" className="text-sm text-white hover:text-white transition-colors flex items-center gap-1.5 group">
+                <Link href="/" className="text-sm text-white/70 hover:text-white transition-colors flex items-center gap-1.5 group">
                   <span className="w-1 h-1 rounded-full bg-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
                   Accueil
                 </Link>
@@ -147,7 +151,7 @@ export function Footer({ variant = 'default' }: FooterProps) {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white hover:text-white transition-colors flex items-center gap-1.5 group"
+                    className="text-sm text-white/70 hover:text-white transition-colors flex items-center gap-1.5 group"
                   >
                     <span className="w-1 h-1 rounded-full bg-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
                     {link.label}
@@ -176,7 +180,7 @@ export function Footer({ variant = 'default' }: FooterProps) {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white hover:text-white transition-colors"
+                    className="text-sm text-white/70 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -249,15 +253,23 @@ export function Footer({ variant = 'default' }: FooterProps) {
       </div>
 
       {/* Barre de bas */}
-      <div className="border-t border-white/5 py-6">
-        <div className="container mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-600">
-          <p>© {new Date().getFullYear()} {SITE.name}. Tous droits réservés.</p>
-          <p className="flex items-center gap-2">
-            Fait avec ❤️ pour les femmes entrepreneures africaines
+      <div className="border-t border-white/10 py-6">
+        <div className="container mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4 text-[8px] text-white/60">
+          <p className="hover:text-white transition-colors">© {new Date().getFullYear()} {SITE.name}. Tous droits réservés.</p>
+          <p className="flex items-center gap-1.5">
+            Powered by{' '}
+            <a
+              href="https://www.connect-web.tech/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/60 hover:text-white transition-colors"
+            >
+              Connect Web
+            </a>
           </p>
           <div className="flex gap-4">
             {LEGAL_LINKS.slice(0, 2).map((link) => (
-              <Link key={link.href} href={link.href} className="hover:text-neutral-400 transition-colors">
+              <Link key={link.href} href={link.href} className="hover:text-white transition-colors">
                 {link.label}
               </Link>
             ))}
