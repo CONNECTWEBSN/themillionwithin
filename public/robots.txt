@@ -1,0 +1,7 @@
+# The Million Within Academy — robots.txt
+# https://www.themillionwithin.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.themillionwithin.com/sitemap.xml

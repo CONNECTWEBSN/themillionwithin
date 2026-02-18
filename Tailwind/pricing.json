@@ -1,0 +1,150 @@
+{
+  "currency": {
+    "default": "FCFA",
+    "available": [
+      "FCFA",
+      "EUR",
+      "USD"
+    ],
+    "rates": {
+      "EUR": 0.00152,
+      "USD": 0.00165
+    }
+  },
+  "plans": [
+    {
+      "id": "standard",
+      "title": "Master Standard",
+      "subtitle": "À votre rythme",
+      "badge": null,
+      "featured": false,
+      "price": {
+        "FCFA": 89500,
+        "EUR": 139,
+        "USD": 145
+      },
+      "originalPrice": null,
+      "features": [
+        "Accès à tous les modules vidéo",
+        "Supports de cours téléchargeables",
+        "Communauté privée",
+        "Accès 6 mois"
+      ],
+      "notIncluded": [
+        "Sessions en direct",
+        "Q&A avec formateurs",
+        "Coaching individuel"
+      ],
+      "cta": "Choisir Standard",
+      "href": "/inscription?plan=standard"
+    },
+    {
+      "id": "accelere-5j",
+      "title": "Master Accéléré 5 Jours",
+      "subtitle": "Formation intensive en direct",
+      "badge": "⭐ Populaire",
+      "featured": true,
+      "price": {
+        "FCFA": 185000,
+        "EUR": 285,
+        "USD": 299
+      },
+      "originalPrice": null,
+      "features": [
+        "Formation en direct sur 5 jours",
+        "Accès à tous les modules vidéo",
+        "Supports de cours téléchargeables",
+        "Communauté privée",
+        "Q&A quotidien avec les formateurs",
+        "Certificat de complétion",
+        "Accès 12 mois aux replays"
+      ],
+      "notIncluded": [
+        "Coaching individuel",
+        "Accès à vie"
+      ],
+      "cta": "Réserver ma place",
+      "href": "/inscription?plan=accelere-5j"
+    },
+    {
+      "id": "non-accelere-suivi",
+      "title": "Master Non Accéléré + Suivi",
+      "subtitle": "Flexible avec coaching personnalisé",
+      "badge": null,
+      "featured": false,
+      "price": {
+        "FCFA": 185000,
+        "EUR": 285,
+        "USD": 299
+      },
+      "originalPrice": null,
+      "features": [
+        "Accès à tous les modules vidéo",
+        "Supports de cours téléchargeables",
+        "Communauté privée",
+        "2 sessions de coaching individuelles",
+        "Accès 12 mois",
+        "Certificat de complétion"
+      ],
+      "notIncluded": [
+        "Sessions en direct",
+        "Accès à vie"
+      ],
+      "cta": "Choisir Non Accéléré + Suivi",
+      "href": "/inscription?plan=non-accelere-suivi"
+    },
+    {
+      "id": "pro",
+      "title": "Master PRO",
+      "subtitle": "Pour chefs d'entreprise",
+      "badge": "Premium",
+      "featured": false,
+      "price": {
+        "FCFA": 981500,
+        "EUR": 1499,
+        "USD": 1599
+      },
+      "originalPrice": null,
+      "features": [
+        "Tout du programme Accéléré 5J",
+        "6 mois de coaching individuel mensuel",
+        "Accès à la communauté VIP",
+        "Revue de business plan personnalisée",
+        "Accès à vie aux formations futures",
+        "Certificat premium",
+        "Réseau d'affaires exclusif"
+      ],
+      "notIncluded": [],
+      "cta": "Choisir PRO",
+      "href": "/inscription?plan=pro"
+    }
+  ],
+  "paymentMethods": [
+    {
+      "id": "wave",
+      "label": "Wave",
+      "available": true
+    },
+    {
+      "id": "orange-money",
+      "label": "Orange Money",
+      "available": true
+    },
+    {
+      "id": "card",
+      "label": "Carte bancaire (Visa/Mastercard)",
+      "available": true
+    },
+    {
+      "id": "transfer",
+      "label": "Virement bancaire",
+      "available": true
+    }
+  ],
+  "guarantee": {
+    "days": 7,
+    "description": "Garantie satisfait ou remboursé pendant 7 jours après les 2 premiers jours de formation."
+  },
+  "_audit_source": "Audit UX §5.4 — 17/02/2026",
+  "_whatsapp": "+12812031065"
+}

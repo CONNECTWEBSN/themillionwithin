@@ -1,0 +1,125 @@
+/* ================================================================
+   ANIMATIONS.CSS — The Million Within Academy
+   Animations CSS pures (complément Framer Motion)
+   Résout audit §2.9 : "Pas d'animations au scroll"
+   ================================================================ */
+
+/* ── Scroll-driven animations (moderne, CSS pur) ────────────── */
+@supports (animation-timeline: scroll()) {
+  .scroll-fade-up {
+    animation: fade-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+
+  .scroll-fade-in {
+    animation: fade-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 25%;
+  }
+}
+
+/* Fallback pour navigateurs sans scroll-driven */
+@supports not (animation-timeline: scroll()) {
+  /* Les animations Framer Motion prennent le relais */
+  .scroll-fade-up,
+  .scroll-fade-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Stagger helpers (utilisés avec JS delay) ───────────────── */
+.stagger-children > * {
+  animation-fill-mode: both;
+}
+.stagger-children > *:nth-child(1)  { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2)  { animation-delay: 80ms; }
+.stagger-children > *:nth-child(3)  { animation-delay: 160ms; }
+.stagger-children > *:nth-child(4)  { animation-delay: 240ms; }
+.stagger-children > *:nth-child(5)  { animation-delay: 320ms; }
+.stagger-children > *:nth-child(6)  { animation-delay: 400ms; }
+
+/* ── Hover transitions card ─────────────────────────────────── */
+.card-hover-scale {
+  transition:
+    transform var(--transition-slow) var(--ease-smooth),
+    box-shadow var(--transition-slow) var(--ease-smooth);
+}
+.card-hover-scale:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: var(--shadow-xl);
+}
+
+/* ── Float décoratif (hero badges, éléments flottants) ─────── */
+.float-slow  { animation: float 6s var(--ease-in-out) infinite; }
+.float-mid   { animation: float 4.5s var(--ease-in-out) infinite 0.3s; }
+.float-fast  { animation: float-sm 3s var(--ease-in-out) infinite 0.6s; }
+
+/* ── Spin lent (icônes décoratives) ────────────────────────── */
+.spin-slow   { animation: spin-slow 12s linear infinite; }
+.spin-medium { animation: spin-slow 6s linear infinite; }
+
+/* ── Pulse CTA ──────────────────────────────────────────────── */
+.pulse-brand { animation: pulse-brand 2.4s ease-in-out infinite; }
+
+/* ── Page transitions (entre pages Next.js) ────────────────── */
+.page-enter {
+  animation: fade-in 0.35s var(--ease-out) both;
+}
+
+/* ── Skeleton shimmer ───────────────────────────────────────── */
+.skeleton-shine {
+  background: linear-gradient(
+    90deg,
+    var(--color-neutral-200) 25%,
+    var(--color-neutral-100) 50%,
+    var(--color-neutral-200) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+/* ── Underline hover link ───────────────────────────────────── */
+.link-hover {
+  background-image: linear-gradient(
+    var(--color-primary-500),
+    var(--color-primary-500)
+  );
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  transition: background-size var(--transition) var(--ease-out);
+}
+.link-hover:hover { background-size: 100% 2px; }
+
+/* ── Marquee pause au hover ─────────────────────────────────── */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ── Accordion smooth height ────────────────────────────────── */
+.accordion-content {
+  overflow: hidden;
+  transition: height var(--duration-normal) var(--ease-smooth);
+}
+
+/* ── Video play button ripple ───────────────────────────────── */
+.play-button-ripple::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: var(--color-primary-500);
+  opacity: 0;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* ── Countdown number transition ───────────────────────────── */
+.countdown-number {
+  transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+}
+.countdown-number.changing {
+  transform: translateY(-4px);
+  opacity: 0.5;
+}

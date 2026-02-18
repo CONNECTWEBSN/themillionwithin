@@ -1,0 +1,5 @@
+{
+  "currency": {"default":"FCFA","available":["FCFA","EUR","USD"]},
+  "paymentMethods": [{"id":"wave","label":"Wave"},{"id":"orange-money","label":"Orange Money"},{"id":"card","label":"Carte bancaire"}],
+  "guarantee": {"days":7,"description":"Garantie satisfait ou remboursé 7 jours après les 2 premiers jours de formation."}
+}

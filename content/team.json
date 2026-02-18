@@ -1,0 +1,6 @@
+[
+  {"id":"ceo","name":"Mme Sall","role":"Fondatrice & CEO","bio":"Entrepreneuse depuis plus de 10 ans, Mme Sall a accompagné plus de 496 femmes dans la création et le développement de leur business.","photo":"/images/team/mme-sall.jpg","featured":true,"order":1,"social":{"whatsapp":"https://api.whatsapp.com/send?phone=12812031065"}},
+  {"id":"capitaine-1","name":"Mme Dieng Anna","role":"Capitaine Alumni","bio":"Ancienne étudiante devenue formatrice, elle accompagne les nouvelles entrepreneures de la communauté francophone.","photo":"/images/team/dieng-anna.jpg","featured":false,"order":2},
+  {"id":"capitaine-2","name":"Mme Seck Ramatoulaye","role":"Capitaine Alumni","bio":"Business coach et ancienne étudiante, elle guide les femmes de la diaspora.","photo":"/images/team/seck-ramatoulaye.jpg","featured":false,"order":3,"testimonialId":"2"},
+  {"id":"capitaine-3","name":"Mme Diop Khadidiatou","role":"Capitaine Alumni","bio":"Spécialiste en développement business international, elle accompagne les entrepreneures de la diaspora.","photo":"/images/team/diop-khadidiatou.jpg","featured":false,"order":4,"testimonialId":"4"}
+]

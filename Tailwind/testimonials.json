@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "name": "Ramatoulaye Wade",
+    "country": "Canada",
+    "countryFlag": "🇨🇦",
+    "rating": 5,
+    "quote": "Cette formation a transformé ma vie. En 5 jours, j'ai lancé mon business et je génère maintenant un revenu stable tout en étant présente pour mes enfants.",
+    "businessType": "Commerce en ligne",
+    "videoUrl": "",
+    "thumbnailUrl": "/images/testimonials/ramatoulaye-wade.jpg",
+    "source": "Audit §5.6"
+  },
+  {
+    "id": "2",
+    "name": "Ramatoulaye Séck",
+    "country": "France",
+    "countryFlag": "🇫🇷",
+    "rating": 5,
+    "quote": "Je n'aurais jamais cru qu'en moins d'une semaine, j'aurais un business plan solide et mes premiers clients. The Million Within Academy m'a ouvert des horizons que je n'imaginais pas.",
+    "businessType": "Coaching beauté",
+    "videoUrl": "",
+    "thumbnailUrl": "/images/testimonials/ramatoulaye-seck.jpg",
+    "source": "Audit §5.6"
+  },
+  {
+    "id": "3",
+    "name": "Dior Diagne",
+    "country": "Sénégal",
+    "countryFlag": "🇸🇳",
+    "rating": 5,
+    "quote": "Sans capital de départ, j'ai réussi à créer mon entreprise grâce aux stratégies enseignées. Aujourd'hui je forme d'autres femmes à mon tour.",
+    "businessType": "Formation professionnelle",
+    "videoUrl": "",
+    "thumbnailUrl": "/images/testimonials/dior-diagne.jpg",
+    "source": "Audit §5.6"
+  },
+  {
+    "id": "4",
+    "name": "Khadidiatou Diop",
+    "country": "Espagne",
+    "countryFlag": "🇪🇸",
+    "rating": 5,
+    "quote": "Vivre en diaspora et vouloir entreprendre, c'était compliqué. Cette formation m'a donné les outils pour me lancer depuis chez moi en Espagne.",
+    "businessType": "Import-Export",
+    "videoUrl": "",
+    "thumbnailUrl": "/images/testimonials/khadidiatou-diop.jpg",
+    "source": "Audit §5.6"
+  },
+  {
+    "id": "5",
+    "name": "Mame Diarra Sall",
+    "country": "Italie",
+    "countryFlag": "🇮🇹",
+    "rating": 5,
+    "quote": "L'accompagnement post-formation est exceptionnel. La communauté de femmes entrepreneures m'apporte un soutien inestimable chaque jour.",
+    "businessType": "Gastronomie africaine",
+    "videoUrl": "",
+    "thumbnailUrl": "/images/testimonials/mame-diarra-sall.jpg",
+    "source": "Audit §5.6"
+  },
+  {
+    "id": "6",
+    "name": "Collette Basse",
+    "country": "Sénégal",
+    "countryFlag": "🇸🇳",
+    "rating": 5,
+    "quote": "J'avais peur de ne pas y arriver avec 3 enfants. Mme Sall m'a prouvé que l'équilibre famille-business est possible. Mon chiffre d'affaires parle pour moi.",
+    "businessType": "Prêt-à-porter africain",
+    "videoUrl": "",
+    "thumbnailUrl": "/images/testimonials/collette-basse.jpg",
+    "source": "Audit §5.6"
+  }
+]

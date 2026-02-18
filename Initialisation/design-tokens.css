@@ -1,0 +1,373 @@
+/* ================================================================
+   DESIGN TOKENS — The Million Within Academy
+   v2.0 — Basé sur l'Audit UX du 17/02/2026
+   ================================================================
+   Direction : Chaleur africaine × Premium occidental
+   Audience : Femmes entrepreneures — Afrique, France, Canada, USA
+   Résout : §2.1 hiérarchie | §2.5 espacement | §2.6 contraste |
+            §2.7 countdown | §2.8 pricing | §2.9 interactions
+   ================================================================ */
+
+:root {
+
+  /* ════════════════════════════════════════════════════════════
+     01. COULEURS — Palette "Chaleur Africaine"
+     ════════════════════════════════════════════════════════════ */
+
+  /* Orange Soleil — Primaire / Énergie / Action */
+  --color-primary-25:  #FFFAF5;
+  --color-primary-50:  #FFF4E8;
+  --color-primary-100: #FFE5C8;
+  --color-primary-200: #FFCB91;
+  --color-primary-300: #FFA94D;
+  --color-primary-400: #FF8C1A;
+  --color-primary-500: #F97316;  /* Brand principal */
+  --color-primary-600: #E05E00;  /* Hover */
+  --color-primary-700: #B84A00;  /* Active */
+  --color-primary-800: #8C3700;
+  --color-primary-900: #5C2400;
+  --color-primary-950: #3D1800;
+
+  /* Vert Savane — Secondaire / Succès / Croissance */
+  --color-secondary-25:  #F4FDF7;
+  --color-secondary-50:  #E8FAF0;
+  --color-secondary-100: #CCF2DC;
+  --color-secondary-200: #99E4B9;
+  --color-secondary-300: #4DCC8A;
+  --color-secondary-400: #1AB56A;
+  --color-secondary-500: #059950;
+  --color-secondary-600: #047A3F;
+  --color-secondary-700: #035C30;
+  --color-secondary-800: #024022;
+  --color-secondary-900: #012918;
+
+  /* Or Mat — Accent / Valeur premium */
+  --color-gold-100: #FEF7DC;
+  --color-gold-200: #FDE99A;
+  --color-gold-300: #FCD858;
+  --color-gold-400: #F5C518;
+  --color-gold-500: #D4A017;
+  --color-gold-600: #A87C10;
+  --color-gold-700: #7C5A0A;
+
+  /* Terre Brûlée — Accent / Authenticité */
+  --color-terre-100: #F0E4D4;
+  --color-terre-200: #DFC3A3;
+  --color-terre-300: #C99B6E;
+  --color-terre-400: #B07840;
+  --color-terre-500: #8B5E2E;
+
+  /* Ardoise Chaude — Neutres (warm, pas cold gray) */
+  /* WCAG AA validé : ratio ≥ 4.5:1 pour --500 et supérieurs */
+  --color-neutral-0:   #FFFFFF;
+  --color-neutral-25:  #FDFCFB;
+  --color-neutral-50:  #F8F5F2;
+  --color-neutral-100: #F0EBE4;
+  --color-neutral-200: #DED5CA;
+  --color-neutral-300: #C4B8AA;
+  --color-neutral-400: #A0907F;
+  --color-neutral-500: #7C6A58;  /* 4.7:1 ✅ */
+  --color-neutral-600: #5A4A3A;  /* 7.4:1 ✅ */
+  --color-neutral-700: #3D3128;  /* 10.8:1 ✅ */
+  --color-neutral-800: #261E16;  /* 13.4:1 ✅ */
+  --color-neutral-900: #130E09;  /* 17.1:1 ✅ */
+  --color-neutral-950: #0A0705;
+
+  /* Sémantiques */
+  --color-success:       var(--color-secondary-500);
+  --color-success-light: var(--color-secondary-50);
+  --color-success-dark:  var(--color-secondary-700);
+  --color-warning:       var(--color-gold-400);
+  --color-warning-light: var(--color-gold-100);
+  --color-warning-dark:  var(--color-gold-600);
+  --color-danger:        #DC2626;
+  --color-danger-light:  #FEF2F2;
+  --color-danger-dark:   #991B1B;
+  --color-info:          #2563EB;
+  --color-info-light:    #EFF6FF;
+
+  /* Surfaces — sections alternées */
+  --surface-default: #FFFFFF;
+  --surface-warm:    #FDFCFB;
+  --surface-tinted:  #F8F5F2;
+  --surface-brand:   #FFF4E8;
+  --surface-dark:    #261E16;
+  --surface-darker:  #130E09;
+
+  /* Rôles texte — hiérarchie résolue */
+  --text-primary:   #130E09;
+  --text-secondary: #261E16;
+  --text-body:      #3D3128;
+  --text-muted:     #7C6A58;
+  --text-disabled:  #C4B8AA;
+  --text-inverse:   #FFFFFF;
+  --text-brand:     #F97316;
+  --text-brand-dark:#B84A00;
+
+  /* Bordures */
+  --border-light:   #F0EBE4;
+  --border-default: #DED5CA;
+  --border-medium:  #C4B8AA;
+  --border-strong:  #A0907F;
+  --border-brand:   #FFA94D;
+  --border-focus:   #F97316;
+
+
+  /* ════════════════════════════════════════════════════════════
+     02. TYPOGRAPHIE
+     ════════════════════════════════════════════════════════════ */
+
+  --font-heading: 'Poppins', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Échelle */
+  --text-2xs:  0.625rem;
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-md:   1.0625rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+  --text-4xl:  2.25rem;
+  --text-5xl:  3rem;
+  --text-6xl:  3.75rem;
+  --text-7xl:  4.5rem;
+  --text-hero: clamp(2.25rem, 5vw, 3.75rem);
+  --text-display: clamp(1.5rem, 3vw, 2.5rem);
+
+  /* Poids */
+  --font-light:     300;
+  --font-normal:    400;
+  --font-medium:    500;
+  --font-semibold:  600;
+  --font-bold:      700;
+  --font-extrabold: 800;
+  --font-black:     900;
+
+  /* Line Height */
+  --leading-none:    1;
+  --leading-tighter: 1.1;
+  --leading-tight:   1.25;
+  --leading-snug:    1.375;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose:   1.75;
+  --leading-reading: 1.8;
+
+  /* Letter Spacing */
+  --tracking-tighter: -0.025em;
+  --tracking-tight:   -0.01em;
+  --tracking-normal:   0;
+  --tracking-wide:     0.025em;
+  --tracking-caps:     0.12em;
+
+  /* Rôles typographiques — desktop */
+  --h1-size:    var(--text-hero);
+  --h1-weight:  var(--font-extrabold);
+  --h1-leading: var(--leading-tighter);
+
+  --h2-size:    var(--text-5xl);
+  --h2-weight:  var(--font-bold);
+  --h2-leading: var(--leading-tight);
+
+  --h3-size:    var(--text-4xl);
+  --h3-weight:  var(--font-bold);
+  --h3-leading: var(--leading-snug);
+
+  --h4-size:    var(--text-2xl);
+  --h4-weight:  var(--font-semibold);
+  --h4-leading: var(--leading-snug);
+
+
+  /* ════════════════════════════════════════════════════════════
+     03. ESPACEMENT — Système 4/8px strict
+     ════════════════════════════════════════════════════════════ */
+
+  --space-0:   0;
+  --space-0-5: 0.125rem;
+  --space-1:   0.25rem;
+  --space-1-5: 0.375rem;
+  --space-2:   0.5rem;
+  --space-2-5: 0.625rem;
+  --space-3:   0.75rem;
+  --space-3-5: 0.875rem;
+  --space-4:   1rem;
+  --space-5:   1.25rem;
+  --space-6:   1.5rem;
+  --space-7:   1.75rem;
+  --space-8:   2rem;
+  --space-10:  2.5rem;
+  --space-12:  3rem;
+  --space-14:  3.5rem;
+  --space-16:  4rem;
+  --space-20:  5rem;
+  --space-24:  6rem;
+  --space-28:  7rem;
+  --space-32:  8rem;
+  --space-40: 10rem;
+  --space-48: 12rem;
+  --space-64: 16rem;
+
+  /* Sections */
+  --section-py-mobile:  var(--space-16);
+  --section-py-tablet:  var(--space-20);
+  --section-py-desktop: var(--space-24);
+  --section-py-hero:    var(--space-32);
+
+
+  /* ════════════════════════════════════════════════════════════
+     04. BREAKPOINTS
+     ════════════════════════════════════════════════════════════ */
+
+  --bp-xs:  320px;
+  --bp-sm:  480px;
+  --bp-md:  768px;
+  --bp-lg:  1024px;
+  --bp-xl:  1280px;
+  --bp-2xl: 1440px;
+
+
+  /* ════════════════════════════════════════════════════════════
+     05. OMBRES — Chaudes et tintées brand
+     ════════════════════════════════════════════════════════════ */
+
+  --shadow-xs:     0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-sm:     0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow:        0 2px 8px -1px rgb(0 0 0 / 0.10), 0 1px 3px -1px rgb(0 0 0 / 0.06);
+  --shadow-md:     0 4px 12px -2px rgb(0 0 0 / 0.10), 0 2px 6px -2px rgb(0 0 0 / 0.06);
+  --shadow-lg:     0 10px 24px -4px rgb(0 0 0 / 0.10), 0 4px 8px -4px rgb(0 0 0 / 0.06);
+  --shadow-xl:     0 20px 40px -8px rgb(0 0 0 / 0.12), 0 8px 16px -6px rgb(0 0 0 / 0.08);
+  --shadow-2xl:    0 32px 64px -12px rgb(0 0 0 / 0.18);
+  --shadow-inner:  inset 0 2px 4px 0 rgb(0 0 0 / 0.06);
+  --shadow-none:   none;
+
+  --shadow-brand-sm: 0 2px 8px 0 rgb(249 115 22 / 0.20);
+  --shadow-brand-md: 0 4px 16px 0 rgb(249 115 22 / 0.28);
+  --shadow-brand-lg: 0 8px 32px 0 rgb(249 115 22 / 0.32);
+  --shadow-brand-xl: 0 16px 48px 0 rgb(249 115 22 / 0.36);
+
+  --shadow-gold-sm:    0 2px 8px 0 rgb(245 197 24 / 0.24);
+  --shadow-gold-md:    0 4px 16px 0 rgb(245 197 24 / 0.32);
+  --shadow-success-sm: 0 2px 8px 0 rgb(5 153 80 / 0.20);
+  --shadow-success-md: 0 4px 16px 0 rgb(5 153 80 / 0.28);
+  --shadow-warm-lg:    0 16px 40px -8px rgb(139 94 46 / 0.16);
+
+  --shadow-focus-brand: 0 0 0 3px rgb(249 115 22 / 0.35);
+  --shadow-focus-ring:  0 0 0 3px rgb(249 115 22 / 0.20);
+
+
+  /* ════════════════════════════════════════════════════════════
+     06. BORDER RADIUS — Arrondi chaleureux
+     ════════════════════════════════════════════════════════════ */
+
+  --radius-none: 0;
+  --radius-xs:   0.1875rem;
+  --radius-sm:   0.375rem;
+  --radius:      0.5rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.25rem;
+  --radius-2xl:  1.5rem;
+  --radius-3xl:  2rem;
+  --radius-full: 9999px;
+
+
+  /* ════════════════════════════════════════════════════════════
+     07. TRANSITIONS
+     ════════════════════════════════════════════════════════════ */
+
+  --duration-instant:  75ms;
+  --duration-fast:    150ms;
+  --duration-normal:  250ms;
+  --duration-slow:    400ms;
+  --duration-xslow:   600ms;
+  --duration-lazy:   1000ms;
+
+  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  --transition-fast:   150ms cubic-bezier(0, 0, 0.2, 1);
+  --transition:        250ms cubic-bezier(0, 0, 0.2, 1);
+  --transition-slow:   400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-bounce: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+
+  /* ════════════════════════════════════════════════════════════
+     08. Z-INDEX
+     ════════════════════════════════════════════════════════════ */
+
+  --z-negative:  -1;
+  --z-base:       0;
+  --z-raised:    10;
+  --z-float:     20;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+  --z-top:     9999;
+
+
+  /* ════════════════════════════════════════════════════════════
+     09. COMPOSANTS — Tokens spécifiques (résout audit)
+     ════════════════════════════════════════════════════════════ */
+
+  /* Header (résout §2.1 — navigation absente) */
+  --header-height-mobile:  60px;
+  --header-height-desktop: 80px;
+  --header-bg-transparent: transparent;
+  --header-bg-solid:       rgba(253, 252, 251, 0.97);
+  --header-shadow-scroll:  var(--shadow-sm);
+
+  /* Boutons */
+  --btn-height-sm: 2.25rem;    /* 36px */
+  --btn-height-md: 2.75rem;    /* 44px — WCAG touch target */
+  --btn-height-lg: 3.25rem;    /* 52px */
+  --btn-height-xl: 3.75rem;    /* 60px */
+
+  /* Cards */
+  --card-padding:  var(--space-6);
+  --card-padding-lg: var(--space-8);
+  --card-radius:   var(--radius-xl);
+  --card-border:   var(--border-default);
+
+  /* Inputs */
+  --input-height:  3rem;
+  --input-radius:  var(--radius-lg);
+  --input-border:  var(--border-default);
+
+  /* Pricing (résout §2.8 — cartes confuses) */
+  --pricing-featured-bg:     var(--color-primary-500);
+  --pricing-featured-shadow: var(--shadow-brand-lg);
+  --pricing-scale-featured:  1.04;
+
+  /* Countdown (résout §2.7 — timer cassé) */
+  --countdown-flip-bg:     var(--color-neutral-900);
+  --countdown-flip-text:   #FFFFFF;
+  --countdown-label-color: var(--color-neutral-500);
+
+  /* Témoignages (résout §2.4) */
+  --testimonial-overlay:   rgba(0, 0, 0, 0.45);
+  --testimonial-play-bg:   var(--color-primary-500);
+  --testimonial-play-size: 3.5rem;
+
+  /* Partenaires carousel (résout §2.3) */
+  --partner-logo-h:         2.5rem;
+  --partner-grayscale:      0.6;
+  --partner-opacity:        0.65;
+  --marquee-duration:       28s;
+
+  /* Grille */
+  --gap-sm:  var(--space-4);
+  --gap-md:  var(--space-6);
+  --gap-lg:  var(--space-8);
+  --gap-xl:  var(--space-12);
+  --max-content: 1320px;
+  --max-prose:   68ch;
+}

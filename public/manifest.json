@@ -1,0 +1,24 @@
+{
+  "name": "The Million Within Academy",
+  "short_name": "The Million Within",
+  "description": "Formation entrepreneuriat féminin — Bâtissez votre entreprise sans renoncer à votre famille.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFCFB",
+  "theme_color": "#F97316",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
