@@ -1,61 +1,32 @@
 'use client';
 
-import { Users, Lightbulb, ShoppingBag, Settings2, Rocket, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/Badge';
-import { ProgrammeCard } from './ProgrammeCard';
 import { ScrollReveal } from '@/components/shared/ScrollReveal';
-
-const STEPS = [
-  {
-    number: '01',
-    icon: Users,
-    title: 'Développement Personnel',
-    description: 'Posez les fondations solides de votre succès.',
-  },
-  {
-    number: '02',
-    icon: Lightbulb,
-    title: 'Le Produit',
-    description: 'Transformez vos idées en stratégies gagnantes.',
-  },
-  {
-    number: '03',
-    icon: ShoppingBag,
-    title: 'La Vente',
-    description: "Maîtrisez l'art de l'approvisionnement intelligent.",
-  },
-  {
-    number: '04',
-    icon: Settings2,
-    title: 'Le Système',
-    description: 'Structurez votre entreprise pour une croissance durable.',
-  },
-  {
-    number: '05',
-    icon: Rocket,
-    title: 'Le Lancement',
-    description: 'Célébrez votre succès et prenez votre envol.',
-  },
-] as const;
+import { ProgrammeStep } from './ProgrammeStep';
+import { PROGRAMME_STEPS } from './data';
 
 export function ProgrammeSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <section
-      className="py-28 lg:py-36 bg-orange-50 relative overflow-hidden"
+      className="py-24 lg:py-32 bg-[#FAFAF8] relative overflow-hidden"
       aria-labelledby="programme-title"
     >
-      {/* Accent décoratif */}
+      {/* Décoration de fond */}
       <div
-        className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl opacity-[0.05] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #F97316 0%, transparent 70%)' }}
+        className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full blur-3xl opacity-[0.04] pointer-events-none bg-primary-500"
         aria-hidden
       />
 
       <div className="container mx-auto px-5 relative z-10">
         {/* En-tête */}
         <ScrollReveal variant="fadeUp">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 max-w-2xl mx-auto">
             <Badge variant="brand" className="mb-4">
               Le Programme
             </Badge>
@@ -66,24 +37,62 @@ export function ProgrammeSection() {
               5 jours pour{' '}
               <span className="text-primary-500">transformer votre vie.</span>
             </h2>
-            <p className="text-base font-normal leading-relaxed text-neutral-600 max-w-2xl mx-auto">
-              De l'idée au lancement — une méthode testée par 496+ femmes dans 10+ pays.
+            <p className="text-base text-neutral-600 leading-relaxed">
+              De l&apos;idée au lancement — une méthode testée par 496+ femmes
+              dans 10+ pays. Cliquez sur chaque étape pour découvrir le contenu.
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Grille avec effet focus Linear */}
-        <div className="relative group/grid">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 [&>*]:transition-opacity [&>*]:duration-300 [&:has(*:hover)>*:not(:hover)]:opacity-75">
-            {STEPS.map((step, index) => (
-              <ScrollReveal key={step.number} variant="fadeUp" delay={index * 0.1}>
-                <ProgrammeCard
+        {/* Layout : barre de progression verticale + accordéon */}
+        <div className="grid lg:grid-cols-[80px_1fr] gap-8 max-w-3xl mx-auto">
+          {/* Barre de progression verticale (desktop uniquement) */}
+          <div className="hidden lg:flex flex-col items-center pt-8">
+            {PROGRAMME_STEPS.map((_, i) => (
+              <div key={i} className="flex flex-col items-center">
+                <button
+                  type="button"
+                  onClick={() => setActiveIndex(i)}
+                  aria-label={`Aller à l'étape ${i + 1}`}
+                  className={cn(
+                    'w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300',
+                    i === activeIndex
+                      ? 'bg-primary-500 text-white scale-110 shadow-lg shadow-primary-500/30'
+                      : i < activeIndex
+                        ? 'bg-primary-100 text-primary-600 hover:bg-primary-200'
+                        : 'bg-neutral-100 text-neutral-400 hover:bg-neutral-200',
+                  )}
+                >
+                  {i + 1}
+                </button>
+                {i < PROGRAMME_STEPS.length - 1 && (
+                  <div
+                    className={cn(
+                      'w-0.5 h-16 transition-colors duration-500',
+                      i < activeIndex ? 'bg-primary-300' : 'bg-neutral-200',
+                    )}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Accordéon des étapes */}
+          <div className="space-y-3">
+            {PROGRAMME_STEPS.map((step, i) => (
+              <ScrollReveal key={step.number} variant="fadeUp" delay={i * 0.08}>
+                <ProgrammeStep
                   number={step.number}
                   icon={step.icon}
                   title={step.title}
+                  tagline={step.tagline}
                   description={step.description}
-                  isLast={index === STEPS.length - 1}
-                  showConnector={index < STEPS.length - 1}
+                  topics={step.topics}
+                  outcome={step.outcome}
+                  isActive={i === activeIndex}
+                  onClick={() =>
+                    setActiveIndex(i === activeIndex ? -1 : i)
+                  }
                 />
               </ScrollReveal>
             ))}
@@ -92,13 +101,13 @@ export function ProgrammeSection() {
 
         {/* CTA */}
         <ScrollReveal variant="fadeUp" delay={0.5}>
-          <div className="text-center mt-12">
+          <div className="text-center mt-14">
             <Link
               href="/formation"
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-all duration-200 shadow-lg shadow-primary-500/20 hover:shadow-xl hover:-translate-y-0.5"
             >
               Découvrir le programme complet
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4" aria-hidden />
             </Link>
           </div>
         </ScrollReveal>

@@ -8,7 +8,8 @@ import { GlassCard } from '@/components/ui/GlassCard';
 import { HeroMinimal } from '@/components/sections/HeroMinimal';
 import { FloatingCTA } from '@/components/shared/FloatingCTA';
 import { ScrollReveal } from '@/components/shared/ScrollReveal';
-import { PROGRAMME_DAYS, PRICING_PLANS, SITE } from '@/lib/constants';
+import { PRICING_PLANS, SITE } from '@/lib/constants';
+import { PROGRAMME_STEPS } from '@/components/programme/data';
 
 export const metadata: Metadata = {
   title: 'Programme de Formation — 5 jours pour lancer votre business',
@@ -67,12 +68,12 @@ export default function FormationPage() {
   const featuredPlan = PRICING_PLANS.find((p) => p.featured) ?? PRICING_PLANS[1];
 
   // Conversion en tableau mutable pour Timeline
-  const timelineSteps = PROGRAMME_DAYS.map((d) => ({
+  const timelineSteps = PROGRAMME_STEPS.map((d) => ({
     day: d.day,
     title: d.title,
     description: d.description,
-    icon: d.icon,
-    topics: d.topics,
+    icon: '📌',
+    topics: [...d.topics],
   }));
 
   return (

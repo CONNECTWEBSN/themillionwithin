@@ -131,13 +131,9 @@ export const PRICING_PLANS: PricingPlan[] = [
   },
 ];
 
-export const PROGRAMME_DAYS = [
-  { day: 1, title: 'Fondations du succès', description: 'Posez les bases solides de votre mindset entrepreneurial.', icon: '🧱', topics: ['Mindset entrepreneurial', 'Vision et mission'] },
-  { day: 2, title: 'Stratégies gagnantes', description: 'Stratégies commerciales pour femmes entrepreneures africaines.', icon: '🎯', topics: ['Analyse de marché', 'Positionnement unique'] },
-  { day: 3, title: 'Approvisionnement intelligent', description: 'Fournisseurs, négociation, stocks sans capital de départ.', icon: '🤝', topics: ['Trouver des fournisseurs', 'Négociation'] },
-  { day: 4, title: 'Structure pour la croissance', description: 'Outils et systèmes pour grandir en préservant l\'équilibre.', icon: '📈', topics: ['Outils digitaux', 'Automatisation'] },
-  { day: 5, title: 'Lancement et célébration', description: 'Lancez votre business avec un plan d\'action concret.', icon: '🚀', topics: ['Plan de lancement', 'Plan 90 jours'] },
-] as const;
+/* PROGRAMME_DAYS — dérivé de la source unique dans components/programme/data.ts */
+export { PROGRAMME_STEPS } from '@/components/programme/data';
+export type { ProgrammeStep as ProgrammeStepType } from '@/components/programme/types';
 
 export const FAQ_ITEMS = [
   { question: 'Comment se déroule la formation ?', answer: 'La formation se déroule en ligne sur 5 jours consécutifs, avec modules vidéo et sessions en direct.' },

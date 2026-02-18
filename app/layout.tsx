@@ -49,7 +49,12 @@ export const metadata: Metadata = {
     description: 'Bâtissez votre entreprise sans renoncer à votre famille',
   },
   robots: { index: true, follow: true },
-  icons: { icon: '/favicon.ico', apple: '/apple-touch-icon.png' },
+  icons: {
+    icon: [
+      { url: '/images/logo_themillionwithin.png', type: 'image/png' },
+    ],
+    apple: '/images/logo_themillionwithin.png',
+  },
   manifest: '/manifest.json',
 };
 

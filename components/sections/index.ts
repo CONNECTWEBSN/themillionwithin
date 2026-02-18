@@ -3,7 +3,6 @@ export { HeroMinimal } from './HeroMinimal';
 export { SocialProofBar } from './SocialProofBar';
 export { ProblemSolutionSection } from './ProblemSolutionSection';
 export { AboutSection } from './AboutSection';
-export { ProgrammeSection } from './ProgrammeSection';
 export { TestimonialsSection } from './TestimonialsSection';
 export { TeamSection } from './TeamSection';
 export { CountdownSection } from './CountdownSection';

@@ -121,7 +121,7 @@ export function HeroSlider() {
           {/* Titre principal */}
           <h1
             key={`title-${current}`}
-            className="text-5xl lg:text-6xl font-bold leading-tight text-white mb-6 animate-[fade-up_0.55s_ease_0.1s_both]"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-6 animate-[fade-up_0.55s_ease_0.1s_both]"
           >
             {slide.title}{' '}
             <span className="text-primary-400">{slide.titleAccent}</span>{' '}
