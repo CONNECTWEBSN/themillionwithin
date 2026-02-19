@@ -64,7 +64,7 @@ export function TeamCard({ member }: TeamCardProps) {
           <div className="flex items-center justify-center gap-2 mt-3">
             {socialEntries.map(([platform, url]) => {
               const Icon = SOCIAL_ICONS[platform as keyof typeof SOCIAL_ICONS];
-              if (!Icon) return null;
+              if (!Icon || typeof url !== 'string') return null;
 
               return (
                 <a
