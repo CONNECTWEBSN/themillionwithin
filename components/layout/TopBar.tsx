@@ -1,10 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { X, Flame } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { NEXT_SESSION } from '@/lib/constants';
+import { SITE } from '@/lib/constants';
+
+const MESSAGES = [
+  {
+    text: 'Les places sont limitées. Réservez la vôtre maintenant →',
+    href: '/inscription',
+  },
+  {
+    text: '+500 femmes ont transformé leur vie. Voir leurs témoignages →',
+    href: '/temoignages',
+  },
+  {
+    text: '5 jours pour lancer votre business sans capital. Voir le programme →',
+    href: '/formation',
+  },
+  {
+    text: 'Contactez-nous sur WhatsApp →',
+    href: `https://wa.me/${SITE.whatsapp.replace(/\D/g, '')}`,
+    external: true,
+  },
+];
 
 interface TopBarProps {
   className?: string;
@@ -12,28 +32,46 @@ interface TopBarProps {
 
 export function TopBar({ className }: TopBarProps) {
   const [visible, setVisible] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % MESSAGES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   if (!visible) return null;
+
+  const message = MESSAGES[currentIndex];
 
   return (
     <div
       className={cn(
-        'flex h-9 items-center justify-center bg-orange-500 px-4 text-white',
+        'flex h-9 items-center justify-center bg-orange-500 px-4 text-white relative',
         className,
       )}
       role="banner"
     >
-      <Link
-        href="/tarifs"
-        className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest sm:text-sm"
-      >
-        <Flame className="h-3.5 w-3.5 shrink-0" aria-hidden />
-        <span>
-          Début de session{' '}
-          <strong className="font-bold">{NEXT_SESSION.label}</strong> — Plus que{' '}
-          <strong className="font-bold">12 places</strong> disponibles
-        </span>
-      </Link>
+      {message.external ? (
+        <a
+          href={message.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest sm:text-sm hover:opacity-90 transition-opacity"
+        >
+          <Flame className="h-3.5 w-3.5 shrink-0" aria-hidden />
+          <span>{message.text}</span>
+        </a>
+      ) : (
+        <Link
+          href={message.href}
+          className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest sm:text-sm hover:opacity-90 transition-opacity"
+        >
+          <Flame className="h-3.5 w-3.5 shrink-0" aria-hidden />
+          <span>{message.text}</span>
+        </Link>
+      )}
 
       <button
         type="button"

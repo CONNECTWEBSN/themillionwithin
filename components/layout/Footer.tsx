@@ -254,7 +254,7 @@ export function Footer({ variant = 'default' }: FooterProps) {
 
       {/* Barre de bas */}
       <div className="border-t border-white/10 py-6">
-        <div className="container mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4 text-[8px] text-white/60">
+        <div className="container mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4 text-[3px] text-white/60">
           <p className="hover:text-white transition-colors">© {new Date().getFullYear()} {SITE.name}. Tous droits réservés.</p>
           <p className="flex items-center gap-1.5">
             Powered by{' '}
@@ -267,13 +267,6 @@ export function Footer({ variant = 'default' }: FooterProps) {
               Connect Web
             </a>
           </p>
-          <div className="flex gap-4">
-            {LEGAL_LINKS.slice(0, 2).map((link) => (
-              <Link key={link.href} href={link.href} className="hover:text-white transition-colors">
-                {link.label}
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
     </footer>
