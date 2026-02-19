@@ -8,6 +8,7 @@ import { GradientBackground } from '@/components/shared/GradientBackground';
 import { ScrollReveal } from '@/components/shared/ScrollReveal';
 import { VideoCard } from './VideoCard';
 import { VideoLightbox } from './VideoLightbox';
+import { TESTIMONIAL_VIDEOS } from '@/lib/constants';
 import type { VideoData } from './VideoCard';
 
 /* ─── Données témoignages vidéo ─────────────────────────────────── */
@@ -15,7 +16,7 @@ import type { VideoData } from './VideoCard';
 const testimonials: VideoData[] = [
   {
     id: 1,
-    videoUrl: '/videos/Ramatoulaye Wade (canada).mp4',
+    videoUrl: TESTIMONIAL_VIDEOS['ramatoulaye-wade'],
     thumbnail: '/images/testimonials/ramatoulaye-wade.jpg',
     duration: '1:47',
     stars: 5,
@@ -29,7 +30,7 @@ const testimonials: VideoData[] = [
   },
   {
     id: 2,
-    videoUrl: '/videos/Ramatoulaye Séck (France).mp4',
+    videoUrl: TESTIMONIAL_VIDEOS['ramatoulaye-seck'],
     thumbnail: '/images/testimonials/ramatoulaye-seck.jpg',
     duration: '2:34',
     stars: 5,
@@ -43,7 +44,7 @@ const testimonials: VideoData[] = [
   },
   {
     id: 3,
-    videoUrl: '/videos/Dior Diagne (Sénégal).mp4',
+    videoUrl: TESTIMONIAL_VIDEOS['dior-diagne'],
     thumbnail: '/images/testimonials/dior-diagne.jpg',
     duration: '2:11',
     stars: 5,
