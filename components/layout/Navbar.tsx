@@ -24,7 +24,7 @@ export function Navbar({ className }: NavbarProps) {
     <>
       <header
         className={cn(
-          'flex h-[88px] items-center bg-white transition-shadow duration-300',
+          'flex h-14 sm:h-16 lg:h-[88px] items-center bg-white transition-shadow duration-300',
           className,
         )}
       >
@@ -40,7 +40,7 @@ export function Navbar({ className }: NavbarProps) {
               alt={SITE.name}
               width={180}
               height={56}
-              className="h-12 w-auto object-contain"
+              className="h-8 sm:h-10 lg:h-12 w-auto object-contain"
               priority
             />
             <span className="hidden text-lg font-semibold tracking-tight text-gray-900 sm:inline">

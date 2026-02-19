@@ -78,7 +78,7 @@ export function HeroSlider() {
 
   return (
     <section
-      className="relative w-full min-h-[92vh] overflow-hidden bg-neutral-900"
+      className="relative w-full min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[92vh] overflow-hidden bg-neutral-900"
       aria-label="Slider de présentation"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -105,7 +105,7 @@ export function HeroSlider() {
       ))}
 
       {/* ── Contenu texte ──────────────────────────────────────── */}
-      <div className="relative z-10 container mx-auto px-5 flex flex-col justify-center min-h-[92vh] py-24 md:py-32">
+      <div className="relative z-10 container mx-auto px-5 flex flex-col justify-center min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[92vh] py-12 sm:py-16 md:py-24 lg:py-32">
         <div className="max-w-3xl">
 
           {/* Eyebrow */}
@@ -120,7 +120,7 @@ export function HeroSlider() {
           {/* Titre principal */}
           <h1
             key={`title-${current}`}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-6 animate-[fade-up_0.55s_ease_0.1s_both]"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight text-white mb-4 sm:mb-6 animate-[fade-up_0.55s_ease_0.1s_both]"
           >
             {slide.title}{' '}
             <span className="text-primary-400">{slide.titleAccent}</span>{' '}
@@ -130,7 +130,7 @@ export function HeroSlider() {
           {/* Sous-titre */}
           <p
             key={`subtitle-${current}`}
-            className="text-lg font-normal leading-relaxed text-white mb-10 max-w-xl animate-[fade-up_0.6s_ease_0.2s_both]"
+            className="text-sm sm:text-base md:text-lg font-normal leading-relaxed text-white mb-6 sm:mb-8 md:mb-10 max-w-xl animate-[fade-up_0.6s_ease_0.2s_both]"
           >
             {slide.subtitle}
           </p>
@@ -138,23 +138,25 @@ export function HeroSlider() {
           {/* Boutons CTA */}
           <div
             key={`cta-${current}`}
-            className="flex flex-wrap items-center gap-4 animate-[fade-up_0.65s_ease_0.3s_both]"
+            className="flex items-center gap-2 sm:gap-3 md:gap-4 animate-[fade-up_0.65s_ease_0.3s_both]"
           >
             <Button
               href="/inscription"
               variant="cta"
-              size="lg"
-              icon={<ArrowRight className="w-4 h-4" />}
+              size="sm"
+              icon={<ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4 md:h-4" />}
               iconPosition="right"
+              className="text-xs px-4 py-2 h-auto sm:text-sm sm:px-5 sm:py-2.5 md:text-base md:px-7 md:py-3 lg:text-lg lg:px-8 lg:h-[52px]"
             >
               Nous contacter
             </Button>
             <Button
               href="/inscription"
               variant="outline-dark"
-              size="lg"
-              icon={<ArrowRight className="w-4 h-4" />}
+              size="sm"
+              icon={<ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4 md:h-4" />}
               iconPosition="right"
+              className="text-xs px-4 py-2 h-auto sm:text-sm sm:px-5 sm:py-2.5 md:text-base md:px-7 md:py-3 lg:text-lg lg:px-8 lg:h-[52px]"
             >
               S&apos;inscrire
             </Button>

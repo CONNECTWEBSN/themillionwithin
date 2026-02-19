@@ -14,8 +14,8 @@ export default function MarketingLayout({
         <TopBar />
         <Navbar className="shadow-[0_1px_3px_rgba(0,0,0,0.08)]" />
       </div>
-      {/* Spacer pour compenser la hauteur du header fixe (TopBar 36px + Navbar 88px = 124px) */}
-      <div className="h-[124px]" />
+      {/* Spacer pour compenser la hauteur du header fixe */}
+      <div className="h-[92px] sm:h-[100px] lg:h-[124px]" />
       <main>{children}</main>
       <Footer />
     </>

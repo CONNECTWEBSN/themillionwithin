@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { X, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -59,7 +60,15 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
       >
         {/* En-tête du drawer */}
         <div className="flex h-[72px] items-center justify-between border-b border-gray-100 px-6">
-          <span className="text-sm font-semibold text-gray-900">Menu</span>
+          <Link href="/" onClick={onClose}>
+            <Image
+              src="/images/logo_themillionwithin.png"
+              alt={SITE.name}
+              width={120}
+              height={40}
+              className="h-8 w-auto object-contain"
+            />
+          </Link>
           <button
             type="button"
             onClick={onClose}
@@ -99,20 +108,20 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
         </nav>
 
         {/* Boutons fixes en bas */}
-        <div className="border-t border-gray-100 p-4">
+        <div className="border-t border-gray-100 p-2">
           <a
             href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, '')}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="mb-3 flex w-full items-center justify-center gap-2 rounded-full border border-gray-200 px-6 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:bg-gray-50"
+            className="mb-1.5 flex w-full items-center justify-center gap-1.5 rounded-full border border-gray-200 px-3 py-1.5 text-[10px] font-medium text-gray-700 transition-colors hover:border-gray-300 hover:bg-gray-50"
           >
-            <MessageCircle className="h-4 w-4" />
+            <MessageCircle className="h-3 w-3" />
             Chat
           </a>
           <Link
             href="/inscription"
             onClick={onClose}
-            className="flex w-full items-center justify-center rounded-full bg-orange-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
+            className="flex w-full items-center justify-center rounded-full bg-orange-600 px-3 py-1.5 text-[10px] font-semibold text-white transition-colors hover:bg-orange-700"
           >
             S&apos;inscrire
           </Link>

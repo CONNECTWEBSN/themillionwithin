@@ -16,11 +16,11 @@ export function HeroSection() {
             Rejoignez des centaines de femmes qui ont lancé leur business sans renoncer à leur famille.
             Formation en 5 jours, sans capital de départ.
           </p>
-          <div className="flex flex-wrap gap-3 mb-10">
-            <Button href="/inscription" variant="cta" size="lg">
+          <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-10">
+            <Button href="/inscription" variant="cta" size="sm" className="text-xs px-4 py-2 h-auto sm:text-sm sm:px-6 sm:py-2.5 md:text-base md:px-8 md:py-3 lg:text-lg lg:px-8 lg:h-[52px]">
               Réserver ma place
             </Button>
-            <Button href="#programme" variant="outline" size="lg">
+            <Button href="#programme" variant="outline" size="sm" className="text-xs px-4 py-2 h-auto sm:text-sm sm:px-6 sm:py-2.5 md:text-base md:px-8 md:py-3 lg:text-lg lg:px-8 lg:h-[52px]">
               Découvrir le programme
             </Button>
           </div>

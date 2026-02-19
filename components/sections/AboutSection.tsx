@@ -46,7 +46,7 @@ export function AboutSection() {
 
             <ScrollReveal variant="fadeUp" delay={0.15}>
               <p
-                className="text-lg font-normal leading-relaxed text-neutral-600 max-w-xl"
+                className="text-lg font-normal leading-relaxed text-neutral-600 max-w-xl text-justify"
                 dangerouslySetInnerHTML={{ __html: ABOUT.description }}
               />
             </ScrollReveal>
@@ -54,7 +54,7 @@ export function AboutSection() {
             {ABOUT.subdescription && (
               <ScrollReveal variant="fadeUp" delay={0.2}>
                 <p
-                  className="text-base font-normal leading-relaxed text-neutral-500 max-w-xl"
+                  className="text-base font-normal leading-relaxed text-neutral-500 max-w-xl text-justify"
                   dangerouslySetInnerHTML={{ __html: ABOUT.subdescription }}
                 />
               </ScrollReveal>

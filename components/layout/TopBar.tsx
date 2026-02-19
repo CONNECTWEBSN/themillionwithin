@@ -48,7 +48,7 @@ export function TopBar({ className }: TopBarProps) {
   return (
     <div
       className={cn(
-        'flex h-9 items-center justify-center bg-orange-500 px-4 text-white relative',
+        'flex h-auto py-2 sm:h-9 sm:py-0 items-center justify-center bg-orange-500 px-8 sm:px-4 text-white relative',
         className,
       )}
       role="banner"
@@ -58,17 +58,17 @@ export function TopBar({ className }: TopBarProps) {
           href={message.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest sm:text-sm hover:opacity-90 transition-opacity"
+          className="flex items-center justify-center gap-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-wider sm:tracking-widest hover:opacity-90 transition-opacity text-center"
         >
-          <Flame className="h-3.5 w-3.5 shrink-0" aria-hidden />
+          <Flame className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" aria-hidden />
           <span>{message.text}</span>
         </a>
       ) : (
         <Link
           href={message.href}
-          className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest sm:text-sm hover:opacity-90 transition-opacity"
+          className="flex items-center justify-center gap-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-wider sm:tracking-widest hover:opacity-90 transition-opacity text-center"
         >
-          <Flame className="h-3.5 w-3.5 shrink-0" aria-hidden />
+          <Flame className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" aria-hidden />
           <span>{message.text}</span>
         </Link>
       )}
