@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { X, Flame } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SITE } from '@/lib/constants';
+import { useTopBar } from '@/contexts/TopBarContext';
 
 const MESSAGES = [
   {
@@ -31,7 +32,7 @@ interface TopBarProps {
 }
 
 export function TopBar({ className }: TopBarProps) {
-  const [visible, setVisible] = useState(true);
+  const { visible, setVisible } = useTopBar();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {

@@ -1,12 +1,14 @@
+'use client';
+
 import { TopBar } from '@/components/layout/TopBar';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { TopBarProvider, useTopBar } from '@/contexts/TopBarContext';
+import { cn } from '@/lib/utils';
 
-export default function MarketingLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function LayoutContent({ children }: { children: React.ReactNode }) {
+  const { visible } = useTopBar();
+
   return (
     <>
       {/* Header fixe : TopBar + Navbar */}
@@ -15,9 +17,29 @@ export default function MarketingLayout({
         <Navbar className="shadow-[0_1px_3px_rgba(0,0,0,0.08)]" />
       </div>
       {/* Spacer pour compenser la hauteur du header fixe */}
-      <div className="h-[92px] sm:h-[100px] lg:h-[124px]" />
+      {/* TopBar: ~36px mobile, ~36px desktop | Navbar: 56px mobile, 64px sm, 88px lg */}
+      <div
+        className={cn(
+          'transition-all duration-300',
+          visible
+            ? 'h-[92px] sm:h-[100px] lg:h-[124px]' // Avec TopBar
+            : 'h-[56px] sm:h-[64px] lg:h-[88px]', // Sans TopBar
+        )}
+      />
       <main>{children}</main>
       <Footer />
     </>
+  );
+}
+
+export default function MarketingLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <TopBarProvider>
+      <LayoutContent>{children}</LayoutContent>
+    </TopBarProvider>
   );
 }
