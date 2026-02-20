@@ -235,3 +235,10 @@ export const TEAM_MEMBERS = [
 ] as const;
 
 export type TeamMember = (typeof TEAM_MEMBERS)[number];
+
+
+export const CLOUDINARY = {
+  cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || '',
+  apiKey: process.env.CLOUDINARY_API_KEY || '',
+  apiSecret: process.env.CLOUDINARY_API_SECRET || '',
+};
