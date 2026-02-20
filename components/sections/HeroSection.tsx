@@ -8,7 +8,7 @@ export function HeroSection() {
     <Section background="gradient-hero" spacing="hero" noContainer>
       <div className="container mx-auto px-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-16 min-h-hero">
         <div className="max-w-2xl">
-          <Badge variant="brand" className="mb-4">Formation 100% en ligne</Badge>
+          <Badge variant="brand" className="mb-4">Formation en ligne / en présentiel</Badge>
           <h1 className="font-heading text-hero lg:text-hero-lg font-extrabold text-neutral-900 leading-tight mb-4">
             {SITE.tagline}
           </h1>

@@ -9,7 +9,7 @@ export const PROGRAMME_STEPS: ProgrammeStep[] = [
     title: 'Développement Personnel',
     tagline: 'Posez vos fondations',
     description:
-      'Construisez le mindset entrepreneurial qui vous portera. Définissez votre vision, votre mission et vos objectifs concrets.',
+      'Posez les Fondations Solides de Votre Succès.',
     topics: ['Mindset entrepreneurial', 'Vision et mission', 'Gestion du doute'],
     outcome: 'Vous terminez la journée avec une vision claire de votre projet.',
   },
@@ -20,7 +20,7 @@ export const PROGRAMME_STEPS: ProgrammeStep[] = [
     title: 'Le Produit',
     tagline: 'Trouvez votre offre',
     description:
-      'Analysez votre marché et positionnez votre offre unique. Transformez vos idées en stratégies gagnantes.',
+      'Transformez Vos Idées en Stratégies Gagnantes.',
     topics: ['Analyse de marché', 'Positionnement unique', 'Pricing strategy'],
     outcome: 'Vous avez défini votre produit/service et votre clientèle cible.',
   },
@@ -31,7 +31,7 @@ export const PROGRAMME_STEPS: ProgrammeStep[] = [
     title: 'La Vente',
     tagline: "Maîtrisez l'approvisionnement",
     description:
-      'Fournisseurs, négociation, gestion des stocks — même sans capital de départ.',
+      "Maîtrisez l'Art de l'Approvisionnement Intelligent.",
     topics: ['Trouver des fournisseurs', 'Techniques de négociation', 'Stock sans capital'],
     outcome: "Vous avez votre liste de fournisseurs et votre plan d'approvisionnement.",
   },
@@ -42,7 +42,7 @@ export const PROGRAMME_STEPS: ProgrammeStep[] = [
     title: 'Le Système',
     tagline: 'Structurez pour durer',
     description:
-      'Mettez en place les outils et systèmes pour une croissance durable tout en préservant votre équilibre.',
+      'Structurez Votre Entreprise pour une Croissance Durable.',
     topics: ['Outils digitaux', 'Automatisation', 'Équilibre vie-business'],
     outcome: 'Votre business est structuré et prêt à tourner sans vous épuiser.',
   },
@@ -53,7 +53,7 @@ export const PROGRAMME_STEPS: ProgrammeStep[] = [
     title: 'Le Lancement',
     tagline: "Passez à l'action",
     description:
-      "Lancez votre business avec un plan d'action concret sur 90 jours. Célébrez avec la communauté.",
+      'Célébrez Votre Succès et Envolez-Vous !',
     topics: ['Plan de lancement', 'Plan 90 jours', "Communauté d'entraide"],
     outcome: 'Votre business est lancé. Vous avez un plan sur 3 mois.',
   },

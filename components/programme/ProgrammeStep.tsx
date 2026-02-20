@@ -11,7 +11,6 @@ interface ProgrammeStepProps {
   title: string;
   tagline: string;
   description: string;
-  topics: readonly string[];
   outcome: string;
   isActive: boolean;
   onClick: () => void;
@@ -23,7 +22,6 @@ export function ProgrammeStep({
   title,
   tagline,
   description,
-  topics,
   outcome,
   isActive,
   onClick,
@@ -103,18 +101,6 @@ export function ProgrammeStep({
             <div className="pt-5 mt-5 border-t border-neutral-100 space-y-4">
               {/* Description */}
               <p className="text-neutral-600 leading-relaxed">{description}</p>
-
-              {/* Topics / tags */}
-              <div className="flex flex-wrap gap-2">
-                {topics.map((t) => (
-                  <span
-                    key={t}
-                    className="px-3 py-1 text-xs font-medium rounded-full bg-primary-50 text-primary-700 border border-primary-100"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
 
               {/* Outcome */}
               <div className="flex items-start gap-2 p-3 rounded-xl bg-secondary-50 border border-secondary-100">

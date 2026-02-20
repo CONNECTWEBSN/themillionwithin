@@ -29,8 +29,7 @@ export function TeamSection() {
               <span className="text-primary-500">DYNAMIQUE</span>
             </h2>
             <p className="text-lg font-normal leading-relaxed text-neutral-600 max-w-xl mx-auto">
-              Des femmes entrepreneures expérimentées qui vous accompagnent à
-              chaque étape de votre parcours.
+              Notre équipe de formation est composée de professionnels expérimentés, passionnés par le partage de connaissances et l&apos;accompagnement personnalisé.
             </p>
           </div>
         </ScrollReveal>

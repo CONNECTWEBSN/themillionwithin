@@ -88,7 +88,7 @@ export function Footer({ variant = 'default' }: FooterProps) {
           <Button
             href="/inscription"
             variant="gold"
-            size="lg"
+            size="md"
             icon={<ArrowRight className="w-4 h-4" />}
             iconPosition="right"
             className="bg-white text-primary-700 border-white hover:bg-white/90"
@@ -188,16 +188,6 @@ export function Footer({ variant = 'default' }: FooterProps) {
               ))}
             </ul>
 
-            {/* Garantie */}
-            <div className="mt-8 p-4 rounded-xl bg-white/5 border border-white/10">
-              <p className="text-xs font-semibold text-green-400 mb-1 flex items-center gap-1.5">
-                <span aria-hidden>🔒</span>
-                Garantie satisfaite ou remboursée
-              </p>
-              <p className="text-xs text-white leading-relaxed">
-                7 jours après les 2 premiers jours de formation. Sans condition.
-              </p>
-            </div>
           </div>
 
           {/* Colonne contact */}
@@ -254,7 +244,7 @@ export function Footer({ variant = 'default' }: FooterProps) {
 
       {/* Barre de bas */}
       <div className="border-t border-white/10 py-6">
-        <div className="container mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4 text-[3px] text-white/60">
+        <div className="container mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] text-white/60">
           <p className="hover:text-white transition-colors">© {new Date().getFullYear()} {SITE.name}. Tous droits réservés.</p>
           <p className="flex items-center gap-1.5">
             Powered by{' '}

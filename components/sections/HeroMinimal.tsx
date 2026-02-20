@@ -30,9 +30,9 @@ interface HeroMinimalProps {
 }
 
 const SIZE_STYLES = {
-  sm: { section: 'py-16 md:py-20', title: 'text-3xl md:text-4xl', subtitle: 'text-base md:text-lg' },
-  md: { section: 'py-20 md:py-28', title: 'text-4xl md:text-5xl', subtitle: 'text-lg md:text-xl' },
-  lg: { section: 'py-24 md:py-36', title: 'text-4xl md:text-5xl lg:text-6xl', subtitle: 'text-lg md:text-xl' },
+  sm: { section: 'py-10 md:py-14', title: 'text-[1.8125rem] md:text-[2.1875rem] lg:text-[2.5625rem]', subtitle: 'text-[1.1875rem] md:text-[1.3125rem]' },
+  md: { section: 'py-12 md:py-16', title: 'text-[1.8125rem] md:text-[2.1875rem] lg:text-[2.5625rem]', subtitle: 'text-[1.1875rem] md:text-[1.3125rem]' },
+  lg: { section: 'py-16 md:py-20', title: 'text-[1.8125rem] md:text-[2.1875rem] lg:text-[2.5625rem]', subtitle: 'text-[1.3125rem] md:text-[1.4375rem]' },
 };
 
 export function HeroMinimal({
@@ -102,7 +102,7 @@ export function HeroMinimal({
           {/* Titre */}
           <h1
             className={cn(
-              'text-h1 text-neutral-900 mb-5',
+              'font-heading font-bold text-neutral-900 mb-4 leading-tight',
               s.title,
             )}
           >

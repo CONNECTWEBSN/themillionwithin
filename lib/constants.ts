@@ -15,10 +15,10 @@ export const SITE = {
 } as const;
 
 export const STATS = [
-  { value: '496+', label: 'Étudiantes', icon: '👩‍💼' },
-  { value: '319', label: 'Business créés', icon: '🏢' },
+  { value: '673+', label: 'Entrepreneurs formés', icon: '👩‍💼' },
+  { value: '500 M', label: 'Chiffre d\'affaires cumulé', icon: '📈' },
   { value: '10 ans', label: "D'expérience", icon: '⭐' },
-  { value: '100%', label: 'En ligne', icon: '💻' },
+  { value: '100%', label: 'En ligne / en présentiel', icon: '💻' },
 ] as const;
 
 /* ── SECTION ABOUT ────────────────────────────────────────────── */
@@ -32,7 +32,7 @@ export const ABOUT = {
   description:
     'Depuis <strong class="text-neutral-800">10 ans</strong>, The Million Within Academy accompagne les femmes entrepreneures d\'Afrique et de la diaspora dans la création de business rentables — <strong class="text-neutral-800">sans capital de départ</strong>, sans quitter leur foyer.',
   subdescription:
-    'Notre méthode unique, testée par <strong class="text-neutral-800">496+ femmes dans plus de 10 pays</strong>, vous donne les outils, le réseau et la confiance pour transformer votre idée en entreprise prospère en seulement 5 jours.',
+    'Notre méthode unique, testée par <strong class="text-neutral-800">673 entrepreneurs partout dans le monde</strong>, vous donne les outils, le réseau et la confiance pour transformer votre idée en entreprise prospère en seulement 5 jours.',
 } as const;
 
 export const NEXT_SESSION = {
@@ -136,9 +136,9 @@ export { PROGRAMME_STEPS } from '@/components/programme/data';
 export type { ProgrammeStep as ProgrammeStepType } from '@/components/programme/types';
 
 export const FAQ_ITEMS = [
-  { question: 'Comment se déroule la formation ?', answer: 'La formation se déroule en ligne sur 5 jours consécutifs, avec modules vidéo et sessions en direct.' },
+  { question: 'Comment se déroule la formation ?', answer: 'La formation se déroule en ligne / en présentiel sur 5 jours consécutifs, avec modules vidéo et sessions en direct.' },
   { question: 'Ai-je besoin d\'un capital de départ ?', answer: 'Non ! Nous enseignons des stratégies sans investissement initial important.' },
-  { question: 'Quels sont les moyens de paiement acceptés ?', answer: 'Wave, Orange Money, Carte bancaire. Paiement en 2 ou 3 fois possible.' },
+  { question: 'Quels sont les moyens de paiement acceptés ?', answer: 'Wave, Orange Money, Carte bancaire.' },
   { question: 'Puis-je suivre depuis n\'importe quel pays ?', answer: 'Oui. La formation est conçue pour l\'Afrique, l\'Europe et l\'Amérique.' },
   { question: 'Y a-t-il un accompagnement après la formation ?', answer: 'Oui. Communauté privée, et formules Suivi/PRO avec coaching.' },
 ] as const;
@@ -149,13 +149,19 @@ export const PAYMENT_METHODS = [
   { id: 'card', label: 'Carte bancaire', icon: '💳' },
 ] as const;
 
-export const NAV_LINKS = [
+export type NavLink = {
+  label: string;
+  href: string;
+  submenu?: { label: string; href: string }[];
+};
+
+export const NAV_LINKS: NavLink[] = [
   { label: 'Formation', href: '/formation' },
   { label: 'Témoignages', href: '/temoignages' },
   { label: 'Notre équipe', href: '/equipe' },
-  { label: 'Tarifs', href: '/tarifs' },
+  { label: 'Offres', href: '/tarifs' },
   { label: 'FAQ', href: '/faq' },
-] as const;
+];
 
 export const LEGAL_LINKS = [
   { label: 'Mentions légales', href: '/mentions-legales' },

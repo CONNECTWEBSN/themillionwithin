@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CheckCircle2, ArrowRight, Shield, Star, Users2 } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Star, Users2 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { PRICING_PLANS, PAYMENT_METHODS, SITE } from '@/lib/constants';
@@ -188,14 +188,6 @@ export function InscriptionForm() {
           </div>
         )}
 
-        {/* Garantie */}
-        <div className="mt-5 flex items-center gap-3 p-4 rounded-2xl bg-green-50 border border-green-100">
-          <Shield className="w-5 h-5 text-green-600 shrink-0" aria-hidden />
-          <p className="text-sm text-green-700 font-medium">
-            Garantie satisfaite ou remboursée — 7 jours après les 2 premiers jours.
-          </p>
-        </div>
-
         {/* Preuve sociale */}
         <div className="mt-5 flex items-center gap-3 p-4 rounded-2xl bg-gold-100 border border-gold-200">
           <div className="flex gap-0.5 shrink-0">
@@ -204,7 +196,7 @@ export function InscriptionForm() {
             ))}
           </div>
           <p className="text-sm text-neutral-700 font-medium">
-            <strong>496+ femmes</strong> ont déjà rejoint l&apos;academy. Rejoignez-les !
+            <strong>673+ entrepreneurs</strong> ont déjà rejoint l&apos;academy. Rejoignez-les !
           </p>
         </div>
       </aside>
@@ -434,7 +426,7 @@ export function InscriptionForm() {
           <div className="flex items-center justify-center gap-2 text-sm text-neutral-500">
             <Users2 className="w-4 h-4" aria-hidden />
             <span>
-              <strong className="text-neutral-700">496+ femmes</strong> ont déjà franchi ce pas
+              <strong className="text-neutral-700">673+ entrepreneurs</strong> ont déjà franchi ce pas
             </span>
           </div>
         </form>

@@ -6,26 +6,22 @@ import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { HeroMinimal } from '@/components/sections/HeroMinimal';
 import { FloatingCTA } from '@/components/shared/FloatingCTA';
-import { FAQ_ITEMS, SITE } from '@/lib/constants';
+import { SITE } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
 const EXTRA_FAQ: Array<{ question: string; answer: string; category: string }> = [
-  { category: 'Programme', question: 'Comment se déroule la formation ?', answer: 'La formation se déroule en ligne sur 5 jours consécutifs, avec des modules vidéo préenregistrés et des sessions en direct selon la formule choisie. Vous accédez aux contenus à votre rythme (replay disponible).' },
+  { category: 'Programme', question: 'Comment se déroule la formation ?', answer: 'La formation se déroule en ligne / en présentiel sur 5 jours consécutifs, avec des modules vidéo préenregistrés et des sessions en direct selon la formule choisie. Vous accédez aux contenus à votre rythme (replay disponible).' },
   { category: 'Programme', question: 'Ai-je besoin d\'un capital de départ ?', answer: 'Non ! Notre méthode est spécialement conçue pour les femmes qui démarrent sans investissement initial. Nous vous apprenons à lancer votre activité avec les ressources que vous avez déjà.' },
   { category: 'Programme', question: 'Quelle est la durée d\'accès à la formation ?', answer: 'Selon votre formule : 6 mois pour Master Standard, 12 mois pour les formules Accéléré et Suivi, à vie pour le Master PRO.' },
   { category: 'Programme', question: 'La formation est-elle disponible en wolof ?', answer: 'Oui ! La formation est dispensée en français et en wolof pour que chaque femme puisse apprendre dans la langue où elle se sent le plus à l\'aise.' },
   { category: 'Technique', question: 'De quel équipement ai-je besoin ?', answer: 'Un smartphone ou un ordinateur avec connexion internet suffit. Nos vidéos sont optimisées pour une connexion 3G ou 4G.' },
-  { category: 'Technique', question: 'Puis-je suivre depuis n\'importe quel pays ?', answer: 'Oui ! La formation est accessible depuis la France, le Canada, l\'Italie, le Sénégal, le Maroc et tout autre pays. Nous avons des étudiantes dans plus de 10 pays.' },
-  { category: 'Paiement', question: 'Quels sont les moyens de paiement acceptés ?', answer: 'Wave, Orange Money, Free Money et carte bancaire (Visa/Mastercard). Paiement en 2 ou 3 fois disponible. Contactez-nous sur WhatsApp pour le paiement fractionné.' },
-  { category: 'Paiement', question: 'Y a-t-il une garantie satisfaite ou remboursée ?', answer: 'Oui, absolument ! Si après les 2 premiers jours de formation vous n\'êtes pas satisfaite, nous vous remboursons intégralement dans les 7 jours suivants, sans question.' },
+  { category: 'Technique', question: 'Puis-je suivre depuis n\'importe quel pays ?', answer: 'Oui ! La formation est accessible depuis la France, le Canada, l\'Italie, le Sénégal, le Maroc et tout autre pays. Nous avons des étudiantes partout dans le monde.' },
+  { category: 'Paiement', question: 'Quels sont les moyens de paiement acceptés ?', answer: 'Wave, Orange Money, Free Money et carte bancaire (Visa/Mastercard).' },
   { category: 'Accompagnement', question: 'Y a-t-il un accompagnement après la formation ?', answer: 'Oui. Toutes les formules incluent l\'accès à notre communauté privée. Les formules Suivi et PRO comprennent des sessions de coaching individuel avec un membre de l\'équipe.' },
-  { category: 'Accompagnement', question: 'Puis-je obtenir un certificat ?', answer: 'Oui. Les formules Accéléré, Suivi et PRO incluent un certificat de complétion officiel reconnu par notre réseau de partenaires.' },
+  { category: 'Accompagnement', question: 'Puis-je obtenir un certificat ?', answer: 'Oui. Les formules Accéléré, Suivi et PRO incluent un certificat de complétion.' },
 ];
 
-const ALL_FAQ = [
-  ...EXTRA_FAQ,
-  ...FAQ_ITEMS.map((f) => ({ question: f.question, answer: f.answer, category: 'Général' })),
-];
+const ALL_FAQ = [...EXTRA_FAQ];
 
 const CATEGORIES = ['Tous', ...Array.from(new Set(ALL_FAQ.map((f) => f.category)))];
 
@@ -194,12 +190,12 @@ export default function FAQPage() {
             <div className="w-16 h-16 rounded-2xl bg-green-500/20 flex items-center justify-center mx-auto mb-5">
               <MessageCircle className="w-8 h-8 text-green-400" aria-hidden />
             </div>
-            <h2 className="text-h1 text-white mb-4">
+            <h2 className="text-2xl lg:text-3xl font-bold leading-snug text-white mb-4">
               Vous n&apos;avez pas trouvé votre réponse ?
             </h2>
             <p className="text-neutral-400 mb-8">
               Notre équipe est disponible sur WhatsApp pour répondre à toutes vos questions,
-              7j/7 entre 8h et 20h (heure de Dakar).
+              7j/7 entre 8h et 18h (heure de Dakar).
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -213,8 +209,8 @@ export default function FAQPage() {
                 </svg>
                 Écrire sur WhatsApp
               </a>
-              <Button href="/inscription" variant="outline-dark" size="lg"
-                icon={<ArrowRight className="w-5 h-5" />} iconPosition="right">
+              <Button href="/inscription" variant="outline-dark" size="md"
+                icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
                 S&apos;inscrire directement
               </Button>
             </div>

@@ -1,185 +1,218 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowRight, CheckCircle2, Shield, HelpCircle, Star } from 'lucide-react';
+import { ArrowRight, HelpCircle, Users2, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
-import { GlassCard } from '@/components/ui/GlassCard';
 import { HeroMinimal } from '@/components/sections/HeroMinimal';
 import { FloatingCTA } from '@/components/shared/FloatingCTA';
-import { PRICING_PLANS, PAYMENT_METHODS, FAQ_ITEMS, SITE, NEXT_SESSION } from '@/lib/constants';
+import { PAYMENT_METHODS, SITE, NEXT_SESSION } from '@/lib/constants';
 
 type Currency = 'FCFA' | 'EUR' | 'USD';
 
-const CURRENCY_SYMBOLS: Record<Currency, string> = {
-  FCFA: 'FCFA',
-  EUR: '€',
-  USD: '$',
+/* ─── PRIX MULTI-DEVISE ─────────────────────────────────────── */
+const PRESENTIEL_PRICES = {
+  '1 jour': { FCFA: 95_000, EUR: 145, USD: 155 },
+  '2 jours': { FCFA: 185_000, EUR: 285, USD: 299 },
+  '3 jours': { FCFA: 269_000, EUR: 410, USD: 435 },
+  '5 jours': { FCFA: 349_000, EUR: 535, USD: 565 },
 };
 
-const COMPARISON_FEATURES = [
-  { label: 'Accès aux modules vidéo', standard: true, accelere: true, suivi: true, pro: true },
-  { label: 'Supports téléchargeables', standard: true, accelere: true, suivi: true, pro: true },
-  { label: 'Communauté privée', standard: true, accelere: true, suivi: true, pro: true },
-  { label: 'Formation en direct 5 jours', standard: false, accelere: true, suivi: false, pro: true },
-  { label: 'Q&A quotidien', standard: false, accelere: true, suivi: false, pro: true },
-  { label: 'Sessions de coaching individuel', standard: false, accelere: false, suivi: '2 sessions', pro: '6 mois' },
-  { label: 'Certificat de complétion', standard: false, accelere: true, suivi: true, pro: 'Premium' },
-  { label: 'Accès aux replays', standard: '6 mois', accelere: '12 mois', suivi: '12 mois', pro: 'À vie' },
-  { label: 'Revue business plan perso.', standard: false, accelere: false, suivi: false, pro: true },
-  { label: 'Réseau d\'affaires exclusif', standard: false, accelere: false, suivi: false, pro: true },
-  { label: 'Communauté VIP', standard: false, accelere: false, suivi: false, pro: true },
-];
+const ONLINE_PRICE = { FCFA: 185_000, EUR: 285, USD: 299 };
 
-const FAQ_PAYMENT = [
-  { q: 'Puis-je payer en plusieurs fois ?', a: 'Oui ! Nous proposons le paiement en 2 ou 3 fois sans frais pour toutes les formules. Contactez-nous sur WhatsApp pour en bénéficier.' },
-  { q: 'Quels moyens de paiement acceptez-vous ?', a: 'Wave, Orange Money, Free Money et carte bancaire (Visa/Mastercard). Tous les paiements sont 100% sécurisés.' },
-  { q: 'La garantie est-elle vraiment honorée ?', a: 'Absolument. Si les 2 premiers jours ne vous convainquent pas, nous vous remboursons intégralement dans les 7 jours, sans question.' },
-  { q: 'Mon paiement est-il sécurisé ?', a: 'Oui. Nous utilisons des passerelles de paiement certifiées SSL. Vos données bancaires ne sont jamais stockées sur nos serveurs.' },
-];
+const CURRENCY_FORMAT: Record<Currency, { prefix: string; suffix: string }> = {
+  FCFA: { prefix: '', suffix: ' FCFA' },
+  EUR: { prefix: '', suffix: '€' },
+  USD: { prefix: '', suffix: '$' },
+};
 
-function FeatureValue({ value }: { value: boolean | string }) {
-  if (value === false) {
-    return <span className="text-neutral-300 text-lg">—</span>;
-  }
-  if (value === true) {
-    return <CheckCircle2 className="w-5 h-5 text-secondary-500 mx-auto" aria-label="Inclus" />;
-  }
-  return <span className="text-sm font-semibold text-primary-600">{value}</span>;
+function formatPrice(amount: number, currency: Currency) {
+  const { prefix, suffix } = CURRENCY_FORMAT[currency];
+  return `${prefix}${amount.toLocaleString('fr-FR')}${suffix}`;
 }
+
+/* ─── FAQ PAIEMENT ───────────────────────────────────────────── */
+const FAQ_PAYMENT = [
+  { q: 'Quels moyens de paiement acceptez-vous ?', a: 'Wave, Orange Money, Free Money et carte bancaire (Visa/Mastercard). Tous les paiements sont 100% sécurisés.' },
+  { q: 'Mon paiement est-il sécurisé ?', a: 'Oui. Nous utilisons des passerelles de paiement certifiées SSL. Vos données bancaires ne sont jamais stockées sur nos serveurs.' },
+  { q: 'Puis-je payer en plusieurs fois ?', a: 'Oui, nous proposons des facilités de paiement. Contacte-nous sur WhatsApp pour en discuter.' },
+];
 
 export default function TarifsPage() {
   const [currency, setCurrency] = useState<Currency>('FCFA');
   const [openFaq, setOpenFaq] = useState<string | null>(null);
 
-  const formatPrice = (plan: (typeof PRICING_PLANS)[0]) => {
-    const val = plan.price[currency];
-    if (currency === 'FCFA') {
-      return `${val.toLocaleString('fr-FR')} FCFA`;
-    }
-    return `${CURRENCY_SYMBOLS[currency]}${val}`;
-  };
-
   return (
     <>
       {/* ─── HERO ──────────────────────────────────────────────── */}
       <HeroMinimal
-        label="Formules & Tarifs"
+        label="Nos Offres"
         title="Investissez dans votre"
         titleHighlight="avenir"
-        subtitle={`Choisissez la formule qui correspond à vos besoins et à votre budget. Prochaine session : ${NEXT_SESSION.label}. Places limitées.`}
-        breadcrumbs={[{ label: 'Accueil', href: '/' }, { label: 'Tarifs' }]}
+        subtitle={`Choisissez la formule qui correspond à vos besoins. Prochaine session : ${NEXT_SESSION.label}. Places limitées.`}
+        breadcrumbs={[{ label: 'Accueil', href: '/' }, { label: 'Nos Offres' }]}
         size="md"
       />
 
-      {/* ─── TOGGLE DEVISE ─────────────────────────────────────── */}
-      <section className="py-8 bg-white border-b border-neutral-100 sticky top-0 z-50 shadow-sm" aria-label="Choisir la devise">
+      {/* ─── SÉLECTEUR DE DEVISE + LES 2 OFFRES ──────────────── */}
+      <section className="py-16 md:py-20 bg-gradient-to-b from-neutral-50 to-white" aria-labelledby="session-title">
         <div className="container mx-auto px-5">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm font-medium text-neutral-600">Afficher les prix en :</p>
-            <div className="flex gap-1 p-1 bg-neutral-100 rounded-xl" role="group" aria-label="Sélection de devise">
-              {(['FCFA', 'EUR', 'USD'] as Currency[]).map((c) => (
-                <button
-                  key={c}
-                  type="button"
-                  onClick={() => setCurrency(c)}
-                  className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
-                    currency === c
-                      ? 'bg-white text-neutral-900 shadow-sm'
-                      : 'text-neutral-500 hover:text-neutral-700'
-                  }`}
-                  aria-pressed={currency === c}
-                >
-                  {c}
-                </button>
-              ))}
-            </div>
-            <div className="flex items-center gap-2 text-sm text-neutral-500">
-              <Shield className="w-4 h-4 text-secondary-500" aria-hidden />
-              Garantie 7 jours satisfaite ou remboursée
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── CARTES TARIFS ─────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-neutral-50" aria-labelledby="pricing-title">
-        <div className="container mx-auto px-5">
-          <div className="text-center mb-12">
-            <h2 id="pricing-title" className="text-h1 text-neutral-900">
-              Choisissez votre{' '}
-              <span className="text-primary-500">formule</span>
+          {/* Header */}
+          <div className="text-center mb-10">
+            <Badge variant="brand" className="mb-4">Prochaine Session</Badge>
+            <h2 id="session-title" className="text-2xl lg:text-3xl font-bold leading-snug text-neutral-900 mb-2">
+              Business Master <span className="text-primary-500">Avril 2026</span>
             </h2>
+            <p className="text-lg font-semibold text-neutral-700">Du 6 au 10 Avril</p>
+            <p className="text-sm text-red-500 font-medium mt-2">⚠️ Places limitées — Inscris-toi vite !</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-            {PRICING_PLANS.map((plan) => (
-              <article
-                key={plan.id}
-                className={`relative flex flex-col rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 ${
-                  plan.featured
-                    ? 'bg-primary-500 shadow-brand-xl scale-[1.02] z-10'
-                    : 'bg-white border border-neutral-200 shadow-sm hover:shadow-xl'
-                }`}
-                aria-label={`Formule ${plan.title}`}
-              >
-                {/* Badge popular */}
-                {plan.badge && (
-                  <div className="absolute -top-px left-1/2 -translate-x-1/2">
-                    <div className="bg-gold-400 text-neutral-900 text-xs font-bold px-4 py-1.5 rounded-b-xl shadow-gold-sm flex items-center gap-1.5">
-                      <Star className="w-3 h-3 fill-current" aria-hidden />
-                      {plan.badge}
-                    </div>
-                  </div>
-                )}
-
-                <div className="p-6 pt-8 flex flex-col flex-1">
-                  {/* En-tête */}
-                  <div className="mb-6">
-                    <h3 className={`font-heading font-bold text-xl mb-1 ${plan.featured ? 'text-white' : 'text-neutral-900'}`}>
-                      {plan.title}
-                    </h3>
-                    <p className={`text-sm ${plan.featured ? 'text-white/70' : 'text-neutral-500'}`}>
-                      {plan.subtitle}
-                    </p>
-                  </div>
-
-                  {/* Prix */}
-                  <div className="mb-6 pb-6 border-b border-current/10">
-                    <div className={`font-heading font-black text-3xl ${plan.featured ? 'text-gold-300' : 'text-neutral-900'}`}>
-                      {formatPrice(plan)}
-                    </div>
-                    {currency !== 'FCFA' && (
-                      <p className={`text-xs mt-1 ${plan.featured ? 'text-white/60' : 'text-neutral-400'}`}>
-                        ≈ {plan.price.FCFA.toLocaleString('fr-FR')} FCFA
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Fonctionnalités */}
-                  <ul className="space-y-3 flex-1 mb-8">
-                    {plan.features.map((f) => (
-                      <li key={f} className={`flex items-start gap-2.5 text-sm ${plan.featured ? 'text-white/90' : 'text-neutral-600'}`}>
-                        <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${plan.featured ? 'text-gold-300' : 'text-secondary-500'}`} aria-hidden />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA */}
-                  <Button
-                    href={plan.href}
-                    variant={plan.featured ? 'gold' : 'primary'}
-                    size="md"
-                    fullWidth
-                    icon={<ArrowRight className="w-4 h-4" />}
-                    iconPosition="right"
+          {/* Sélecteur de devise */}
+          <div className="flex justify-center mb-10">
+            <div className="inline-flex flex-col sm:flex-row items-center gap-3 p-4 bg-white rounded-2xl shadow-md border border-neutral-200" role="group" aria-label="Sélection de devise">
+              <p className="text-sm font-semibold text-neutral-700">Afficher les prix en :</p>
+              <div className="flex gap-1.5 p-1 bg-neutral-100 rounded-xl">
+                {(['FCFA', 'EUR', 'USD'] as Currency[]).map((c) => (
+                  <button
+                    key={c}
+                    type="button"
+                    onClick={() => setCurrency(c)}
+                    className={`px-6 py-2.5 rounded-lg text-sm font-bold transition-all duration-200 ${
+                      currency === c
+                        ? 'bg-primary-500 text-white shadow-md'
+                        : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
+                    }`}
+                    aria-pressed={currency === c}
                   >
-                    {plan.cta}
-                  </Button>
-                </div>
-              </article>
-            ))}
+                    {c}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Les deux offres */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            
+            {/* ── Carte En Présentiel ──────────────────────────── */}
+            <div className="relative bg-white rounded-3xl p-8 overflow-hidden border-2 border-primary-500 shadow-xl transition-transform duration-300 hover:-translate-y-1">
+              <div className="absolute -top-2 -left-2 w-14 h-14 bg-primary-500 rounded-full flex items-center justify-center shadow-lg">
+                <Users2 className="w-7 h-7 text-white" />
+              </div>
+              
+              <h3 className="text-2xl font-bold text-primary-600 mb-6 mt-6">En présentiel</h3>
+              
+              <ul className="space-y-3 mb-6">
+                {Object.entries(PRESENTIEL_PRICES).slice(0, 3).map(([label, prices]) => (
+                  <li key={label} className="flex items-center gap-3 text-neutral-700">
+                    <span className="w-2 h-2 rounded-full bg-primary-500 shrink-0" />
+                    <span>{label} : <strong className="text-neutral-900">{formatPrice(prices[currency], currency)}</strong></span>
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="border-t border-neutral-200 pt-6">
+                <p className="text-sm font-medium text-primary-600 mb-2">5 jours : programme complet</p>
+                <p className="text-3xl font-black text-neutral-900">
+                  {formatPrice(PRESENTIEL_PRICES['5 jours'][currency], currency)}
+                </p>
+                <p className="text-sm text-neutral-500">(5 jours)</p>
+                {currency !== 'FCFA' && (
+                  <p className="text-xs text-neutral-400 mt-1">
+                    ≈ {PRESENTIEL_PRICES['5 jours'].FCFA.toLocaleString('fr-FR')} FCFA
+                  </p>
+                )}
+              </div>
+              
+              <div className="mt-6 flex items-center gap-2 text-sm bg-primary-50 text-primary-700 rounded-xl px-4 py-3 border border-primary-100">
+                <span>📍</span>
+                <span className="font-medium">Noom Hôtel Dakar</span>
+              </div>
+
+              <Button href="/inscription" variant="cta" size="md" fullWidth className="mt-6">
+                Réserver ma place
+              </Button>
+            </div>
+
+            {/* ── Carte En Ligne ───────────────────────────────── */}
+            <div className="relative bg-neutral-900 rounded-3xl p-8 overflow-hidden shadow-xl transition-transform duration-300 hover:-translate-y-1">
+              <div className="absolute -top-2 -right-2 w-14 h-14 bg-primary-500 rounded-full flex items-center justify-center shadow-lg">
+                <span className="text-2xl">💻</span>
+              </div>
+              
+              <h3 className="text-2xl font-black text-white mb-2 mt-6">En ligne</h3>
+              <p className="text-neutral-400 text-sm mb-4">Une immersion stratégique pour structurer ton business, où que tu sois.</p>
+              
+              <div className="mb-5">
+                <p className="text-4xl font-black text-primary-400">
+                  {formatPrice(ONLINE_PRICE[currency], currency)}
+                </p>
+                {currency !== 'FCFA' && (
+                  <p className="text-xs text-neutral-500 mt-1">
+                    ≈ {ONLINE_PRICE.FCFA.toLocaleString('fr-FR')} FCFA
+                  </p>
+                )}
+              </div>
+
+              {/* Ce que tu reçois */}
+              <div className="mb-4 p-4 bg-neutral-800 rounded-xl border border-neutral-700">
+                <p className="font-bold text-white text-sm mb-2">En rejoignant Business Master en ligne, tu bénéficies de :</p>
+                <div className="w-8 h-0.5 bg-primary-500 mb-3" />
+                <ul className="space-y-2 text-neutral-300 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary-400 mt-1">•</span>
+                    <span>28 jours d&apos;accès à ton compte étudiant sur notre plateforme privée, avec l&apos;ensemble des cours Business Master</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary-400 mt-1">•</span>
+                    <span>Participation aux 5 jours de formation en direct, pour suivre chaque session en temps réel</span>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* L'approche */}
+              <div className="mb-4 p-4 bg-primary-500 text-white rounded-xl">
+                <p className="font-bold mb-1">Structurer. Décider. Diriger. Même à distance.</p>
+                <p className="text-white/80 text-xs mb-3">Passe de l&apos;effort à la structure, en ligne.</p>
+                <ul className="space-y-2 text-sm opacity-90">
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1">•</span>
+                    <span>Accès aux replays pendant 10 jours après l&apos;événement, pour revoir, approfondir et consolider tes décisions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1">•</span>
+                    <span>Comprendre les fondations solides d&apos;un business structuré</span>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Les bénéfices */}
+              <div className="mb-5 p-4 bg-neutral-800 rounded-xl border border-neutral-700">
+                <p className="font-bold text-white text-sm mb-1">Un écran. Des décisions. De vrais résultats.</p>
+                <p className="text-neutral-400 text-xs mb-3">Un cadre clair pour celles qui veulent avancer vite.</p>
+                <div className="w-8 h-0.5 bg-neutral-600 mb-3" />
+                <ul className="space-y-2 text-neutral-300 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary-400 mt-1">•</span>
+                    <span>Avancer à ton rythme, sans contrainte géographique</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary-400 mt-1">•</span>
+                    <span>Prendre des décisions stratégiques avec méthode et clarté</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="flex items-center gap-2 text-sm text-neutral-400 mb-6">
+                <span>📹</span>
+                <span className="font-medium">Visioconférence & Replay</span>
+              </div>
+
+              <Button href="/inscription" variant="secondary" size="md" fullWidth
+                icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
+                S&apos;inscrire en ligne
+              </Button>
+            </div>
           </div>
 
           {/* Modes de paiement */}
@@ -195,89 +228,12 @@ export default function TarifsPage() {
         </div>
       </section>
 
-      {/* ─── TABLEAU COMPARATIF ────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-white overflow-x-auto" aria-labelledby="compare-title">
-        <div className="container mx-auto px-5">
-          <div className="text-center mb-12">
-            <Badge variant="brand" className="mb-4">Comparatif</Badge>
-            <h2 id="compare-title" className="text-h1 text-neutral-900">
-              Comparez les{' '}
-              <span className="text-primary-500">formules en détail</span>
-            </h2>
-          </div>
-
-          <div className="overflow-x-auto rounded-2xl border border-neutral-200 shadow-sm">
-            <table className="w-full min-w-[700px]" aria-label="Comparatif des formules">
-              <thead>
-                <tr className="bg-neutral-50 border-b border-neutral-200">
-                  <th className="text-left py-4 px-6 font-heading font-bold text-neutral-900 text-sm">Fonctionnalité</th>
-                  {PRICING_PLANS.map((plan) => (
-                    <th
-                      key={plan.id}
-                      className={`py-4 px-4 text-center font-heading font-bold text-sm ${plan.featured ? 'text-primary-600' : 'text-neutral-900'}`}
-                    >
-                      {plan.title}
-                      {plan.featured && (
-                        <span className="block text-xs text-primary-500 font-normal mt-0.5">⭐ Populaire</span>
-                      )}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {COMPARISON_FEATURES.map((feature, i) => (
-                  <tr key={i} className={`border-b border-neutral-100 ${i % 2 === 0 ? 'bg-white' : 'bg-neutral-50/50'}`}>
-                    <td className="py-4 px-6 text-sm text-neutral-700 font-medium">{feature.label}</td>
-                    <td className="py-4 px-4 text-center"><FeatureValue value={feature.standard} /></td>
-                    <td className="py-4 px-4 text-center bg-primary-50/30"><FeatureValue value={feature.accelere} /></td>
-                    <td className="py-4 px-4 text-center"><FeatureValue value={feature.suivi} /></td>
-                    <td className="py-4 px-4 text-center"><FeatureValue value={feature.pro} /></td>
-                  </tr>
-                ))}
-                {/* Ligne CTA */}
-                <tr className="bg-neutral-50">
-                  <td className="py-4 px-6 text-sm font-bold text-neutral-900">Prix</td>
-                  {PRICING_PLANS.map((plan) => (
-                    <td key={plan.id} className={`py-4 px-4 text-center ${plan.featured ? 'bg-primary-50/30' : ''}`}>
-                      <div className={`font-heading font-black text-base ${plan.featured ? 'text-primary-600' : 'text-neutral-900'}`}>
-                        {formatPrice(plan)}
-                      </div>
-                      <Button href={plan.href} variant={plan.featured ? 'primary' : 'outline'} size="sm" className="mt-2">
-                        Choisir
-                      </Button>
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── GARANTIE ──────────────────────────────────────────── */}
-      <section className="py-16 bg-primary-50 border-y border-primary-100" aria-label="Garantie">
-        <div className="container mx-auto px-5">
-          <GlassCard variant="brand" padding="lg" className="max-w-3xl mx-auto text-center">
-            <div className="w-16 h-16 rounded-full bg-secondary-500/20 flex items-center justify-center mx-auto mb-4">
-              <Shield className="w-8 h-8 text-secondary-600" aria-hidden />
-            </div>
-            <h2 className="text-h2 text-neutral-900 mb-3">
-              Garantie satisfaite ou remboursée
-            </h2>
-            <p className="text-neutral-600 leading-relaxed max-w-xl mx-auto">
-              Nous sommes tellement confiants dans notre formation que si les <strong>2 premiers jours</strong> ne vous convainquent pas,
-              vous avez <strong>7 jours</strong> pour demander un remboursement intégral. Sans justification. Sans question.
-            </p>
-          </GlassCard>
-        </div>
-      </section>
-
       {/* ─── FAQ PAIEMENT ──────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-white" aria-labelledby="faq-payment-title">
+      <section className="py-16 md:py-20 bg-white" aria-labelledby="faq-payment-title">
         <div className="container mx-auto px-5 max-w-3xl">
           <div className="text-center mb-12">
             <Badge variant="brand" className="mb-4">Questions paiement</Badge>
-            <h2 id="faq-payment-title" className="text-h2 text-neutral-900">
+            <h2 id="faq-payment-title" className="text-2xl lg:text-3xl font-bold leading-snug text-neutral-900">
               Tout sur le{' '}
               <span className="text-primary-500">paiement</span>
             </h2>
@@ -315,7 +271,7 @@ export default function TarifsPage() {
           <div className="text-center">
             <p className="text-neutral-600 text-sm mb-4">Vous avez d&apos;autres questions ?</p>
             <a
-              href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, '')}?text=Bonjour, j'ai une question sur les tarifs de la formation.`}
+              href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, '')}?text=Bonjour, j'ai une question sur les offres de formation.`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-green-500 text-white font-semibold hover:bg-green-600 transition-colors"
@@ -326,7 +282,28 @@ export default function TarifsPage() {
         </div>
       </section>
 
-      <FloatingCTA text="Choisir ma formule" />
+      {/* ─── INFOLINE ──────────────────────────────────────────── */}
+      <section className="py-12 md:py-16 bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700">
+        <div className="container mx-auto px-5 text-center">
+          <p className="text-white font-bold text-lg mb-5">INFOLINE</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <a href="tel:+12812031065" className="flex items-center gap-2 px-5 py-3 bg-white/10 backdrop-blur rounded-full border border-white/20 hover:bg-white/20 transition-colors">
+              <Phone className="w-4 h-4 text-white" />
+              <span className="font-medium text-sm text-white">+1(281)203-1065</span>
+            </a>
+            <a href="tel:+221785887979" className="flex items-center gap-2 px-5 py-3 bg-white/10 backdrop-blur rounded-full border border-white/20 hover:bg-white/20 transition-colors">
+              <Phone className="w-4 h-4 text-white" />
+              <span className="font-medium text-sm text-white">+221 78 588 79 79</span>
+            </a>
+            <a href="tel:+221783887575" className="flex items-center gap-2 px-5 py-3 bg-white/10 backdrop-blur rounded-full border border-white/20 hover:bg-white/20 transition-colors">
+              <Phone className="w-4 h-4 text-white" />
+              <span className="font-medium text-sm text-white">+221 78 388 75 75</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <FloatingCTA text="Choisir mon offre" />
     </>
   );
 }

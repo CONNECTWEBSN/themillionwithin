@@ -1,78 +1,71 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { cn } from '@/lib/utils';
 
 interface AnimatedCounterProps {
-  value: number;
+  end: number;
+  duration?: number;
   suffix?: string;
   prefix?: string;
-  duration?: number;
   className?: string;
-  decimals?: number;
-}
-
-function easeOutExpo(t: number): number {
-  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 }
 
 export function AnimatedCounter({
-  value,
+  end,
+  duration = 2000,
   suffix = '',
   prefix = '',
-  duration = 2000,
-  className,
-  decimals = 0,
+  className = '',
 }: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasStarted) {
-          setHasStarted(true);
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
-    observer.observe(el);
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
     return () => observer.disconnect();
-  }, [hasStarted]);
+  }, [isVisible]);
 
   useEffect(() => {
-    if (!hasStarted) return;
+    if (!isVisible) return;
 
-    const startTime = performance.now();
+    let startTime: number | null = null;
+    let animationFrame: number;
 
     const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easedProgress = easeOutExpo(progress);
-      const currentValue = easedProgress * value;
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
 
-      setCount(currentValue);
+      // Easing function: easeOutExpo
+      const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      
+      setCount(Math.floor(easeOutExpo * end));
 
       if (progress < 1) {
-        requestAnimationFrame(animate);
+        animationFrame = requestAnimationFrame(animate);
       }
     };
 
-    requestAnimationFrame(animate);
-  }, [hasStarted, value, duration]);
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isVisible, end, duration]);
 
   return (
-    <span ref={ref} className={cn('tabular-nums', className)} aria-label={`${prefix}${value}${suffix}`}>
-      {prefix}
-      {count.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
-      {suffix}
+    <span ref={ref} className={className}>
+      {prefix}{count.toLocaleString('fr-FR')}{suffix}
     </span>
   );
 }
-
-export default AnimatedCounter;

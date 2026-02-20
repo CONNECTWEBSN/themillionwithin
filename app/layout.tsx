@@ -25,11 +25,11 @@ export const metadata: Metadata = {
     template: '%s | The Million Within Academy',
   },
   description:
-    'Bâtissez votre entreprise prospère sans renoncer à votre famille. Formation en ligne de 5 jours pour femmes entrepreneures. Sans capital de départ, depuis chez vous.',
+    'Bâtissez votre entreprise prospère sans renoncer à votre famille. Formation en ligne / en présentiel de 5 jours pour femmes entrepreneures. Sans capital de départ, depuis chez vous.',
   keywords: [
     'formation entrepreneuriat',
     'femmes entrepreneures',
-    'business en ligne',
+    'business en ligne / en présentiel',
     'formation Afrique',
     'entreprendre depuis la maison',
     'The Million Within',

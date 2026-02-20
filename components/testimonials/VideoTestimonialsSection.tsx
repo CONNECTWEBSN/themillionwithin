@@ -22,7 +22,7 @@ const testimonials: VideoData[] = [
     stars: 5,
     quote:
       'En 5 jours, j\'ai lancé mon business et je génère maintenant un revenu stable tout en étant présente pour mes enfants.',
-    category: 'Commerce en ligne',
+    category: 'Commerce en ligne / en présentiel',
     name: 'Ramatoulaye Wade',
     country: 'Canada',
     countryFlag: '🇨🇦',
@@ -80,14 +80,13 @@ export function VideoTestimonialsSection() {
               </Badge>
               <h2
                 id="video-testimonials-title"
-                className="text-h1 text-neutral-900 mb-4"
+                className="text-3xl lg:text-4xl font-bold leading-snug text-neutral-900 mb-4"
               >
                 Elles ont osé.{' '}
                 <span className="text-primary-500">Elles ont réussi.</span>
               </h2>
-              <p className="text-neutral-600 text-lg max-w-xl mx-auto">
-                Des femmes de 10+ pays qui ont transformé leur vie avec notre
-                formation.
+              <p className="text-neutral-600 text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
+                Ils partagent avec vous leurs expériences, leurs réussites et la valeur ajoutée de notre accompagnement.
               </p>
             </div>
           </ScrollReveal>
@@ -120,7 +119,7 @@ export function VideoTestimonialsSection() {
                 href="/temoignages"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white border border-neutral-200 text-neutral-700 font-semibold hover:border-primary-300 hover:text-primary-600 hover:shadow-md transition-all duration-200 group"
               >
-                Voir les 496+ histoires
+                Voir plus
                 <ArrowRight
                   className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                   aria-hidden

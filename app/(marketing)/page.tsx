@@ -2,12 +2,10 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   ArrowRight,
-  CheckCircle2,
   Zap,
   Globe2,
   Users2,
   TrendingUp,
-  Shield,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
@@ -28,11 +26,11 @@ import { VideoTestimonialsSection } from '@/components/testimonials/VideoTestimo
 export const metadata: Metadata = {
   title: 'The Million Within Academy | Formation Entrepreneuriat Féminin',
   description:
-    'Bâtissez votre entreprise prospère sans renoncer à votre famille. Formation en ligne de 5 jours pour femmes entrepreneures. Sans capital de départ, depuis chez vous.',
+    'Bâtissez votre entreprise prospère sans renoncer à votre famille. Formation en ligne / en présentiel de 5 jours pour femmes entrepreneures. Sans capital de départ, depuis chez vous.',
   keywords: [
     'formation entrepreneuriat',
     'femmes entrepreneures',
-    'business en ligne',
+    'business en ligne / en présentiel',
     'formation Afrique',
     'entreprendre depuis la maison',
   ],
@@ -71,8 +69,8 @@ const PILLARS = [
     shadowColor: 'shadow-gold-md',
     title: 'Depuis chez vous',
     description:
-      '100% en ligne, accessible depuis l\'Afrique, l\'Europe ou l\'Amérique. Aucun déplacement nécessaire.',
-    stat: '10+ pays',
+      'En ligne / en présentiel, accessible depuis l\'Afrique, l\'Europe ou l\'Amérique. Aucun déplacement nécessaire.',
+    stat: 'partout dans le monde',
   },
   {
     icon: <Users2 className="w-6 h-6" />,
@@ -81,7 +79,7 @@ const PILLARS = [
     title: 'Accompagnement réel',
     description:
       'Une communauté de femmes entrepreneures et des coaches qui vous soutiennent bien au-delà des 5 jours.',
-    stat: '496+ étudiantes',
+    stat: '673+ entrepreneurs',
   },
 ];
 
@@ -128,6 +126,11 @@ export default function HomePage() {
                         </>
                       ) : stat.value.includes('%') ? (
                         <span className="text-primary-400">{stat.value}</span>
+                      ) : stat.value === '500 M' ? (
+                        <>
+                          <span className="text-primary-400">500 M</span>
+                          <span className="text-primary-400 text-base md:text-lg font-normal"> FCFA</span>
+                        </>
                       ) : (
                         <span className="text-primary-400">{stat.value}</span>
                       )}
@@ -147,11 +150,6 @@ export default function HomePage() {
           SECTION 3 — ABOUT (vidéo 2 colonnes)
           ══════════════════════════════════════════════════════════ */}
       <AboutSection />
-
-      {/* ══════════════════════════════════════════════════════════
-          SECTION 2b — BARRE PARTENAIRES (marquee)
-          ══════════════════════════════════════════════════════════ */}
-      <PartnersBar />
 
       {/* ══════════════════════════════════════════════════════════
           SECTION 2c — PROGRAMME 5 JOURS
@@ -251,6 +249,11 @@ export default function HomePage() {
       </ScrollReveal>
 
       {/* ══════════════════════════════════════════════════════════
+          SECTION 5b — ILS NOUS ONT FAIT CONFIANCE (marquee)
+          ══════════════════════════════════════════════════════════ */}
+      <PartnersBar />
+
+      {/* ══════════════════════════════════════════════════════════
           SECTION 6 — CTA FINAL + COUNTDOWN
           ══════════════════════════════════════════════════════════ */}
       <ScrollReveal variant="fadeUp">
@@ -276,7 +279,7 @@ export default function HomePage() {
                 className="text-3xl lg:text-4xl font-bold leading-snug text-white mb-4"
               >
                 Votre business commence{' '}
-                <span className="text-primary-400">dans 5 jours.</span>
+                <span className="text-primary-400">dans 53 jours.</span>
               </h2>
 
               <p className="text-base font-normal leading-relaxed text-white/60 mb-6 max-w-xl mx-auto">
@@ -289,27 +292,9 @@ export default function HomePage() {
                 <CountdownTimer targetDate={NEXT_SESSION.date} variant="dark" size="md" />
               </div>
 
-              {/* Avantages inclus */}
-              <div className="flex flex-wrap justify-center gap-2.5 mb-8">
-                {[
-                  { icon: <CheckCircle2 className="w-3.5 h-3.5" />, text: 'Formation en ligne complète' },
-                  { icon: <Shield className="w-3.5 h-3.5" />, text: 'Garantie 7 jours' },
-                  { icon: <Users2 className="w-3.5 h-3.5" />, text: 'Communauté privée' },
-                  { icon: <Globe2 className="w-3.5 h-3.5" />, text: 'Accessible dans 10+ pays' },
-                ].map((item) => (
-                  <div
-                    key={item.text}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-xs font-medium"
-                  >
-                    <span className="text-green-400">{item.icon}</span>
-                    {item.text}
-                  </div>
-                ))}
-              </div>
-
               {/* Boutons CTA */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
-                <Button href="/inscription" variant="cta" size="lg"
+                <Button href="/inscription" variant="cta" size="md"
                   icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
                   Je réserve ma place maintenant
                 </Button>
@@ -325,12 +310,6 @@ export default function HomePage() {
                   Poser une question
                 </a>
               </div>
-
-              {/* Micro-copy confiance */}
-              <p className="text-white/30 text-xs">
-                Paiement sécurisé · Wave · Orange Money · Carte bancaire ·
-                Remboursé si insatisfaite dans les 7 jours
-              </p>
             </div>
           </div>
         </section>

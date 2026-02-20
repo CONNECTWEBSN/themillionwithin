@@ -13,13 +13,13 @@ export function CTAFinalSection() {
           Rejoignez des centaines de femmes qui ont lancé leur business. Sans capital de départ, depuis chez vous.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Button href="/inscription" variant="cta" size="lg">
+          <Button href="/inscription" variant="cta" size="md">
             Commencer maintenant
           </Button>
           <Button
             href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, '')}`}
             variant="outline-dark"
-            size="lg"
+            size="md"
             external
           >
             Nous contacter sur WhatsApp

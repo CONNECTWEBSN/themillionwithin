@@ -38,8 +38,8 @@ export function ProgrammeSection() {
               <span className="text-primary-500">transformer votre vie.</span>
             </h2>
             <p className="text-base text-neutral-600 leading-relaxed">
-              De l&apos;idée au lancement — une méthode testée par 496+ femmes
-              dans 10+ pays. Cliquez sur chaque étape pour découvrir le contenu.
+              De l&apos;idée au lancement — une méthode testée par 673 entrepreneurs
+              partout dans le monde. Cliquez sur chaque étape pour découvrir le contenu.
             </p>
           </div>
         </ScrollReveal>
@@ -87,7 +87,6 @@ export function ProgrammeSection() {
                   title={step.title}
                   tagline={step.tagline}
                   description={step.description}
-                  topics={step.topics}
                   outcome={step.outcome}
                   isActive={i === activeIndex}
                   onClick={() =>
@@ -105,7 +104,7 @@ export function ProgrammeSection() {
             <Button
               href="/formation"
               variant="primary"
-              size="lg"
+              size="md"
               icon={<ArrowRight className="w-4 h-4" />}
               iconPosition="right"
             >

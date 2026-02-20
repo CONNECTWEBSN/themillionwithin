@@ -48,8 +48,8 @@ const SIZES: Record<ButtonSize, string> = {
   xs: 'h-8 px-3 text-xs rounded-xl gap-1.5',
   sm: 'h-9 px-4 text-sm rounded-xl gap-1.5',
   md: 'h-11 px-6 text-base rounded-xl gap-2',
-  lg: 'h-[52px] px-8 text-lg rounded-xl gap-2',
-  xl: 'h-[60px] px-10 text-xl rounded-2xl gap-2.5',
+  lg: 'h-11 px-6 text-base md:h-[52px] md:px-8 md:text-lg rounded-xl gap-2',
+  xl: 'h-[52px] px-8 text-lg md:h-[60px] md:px-10 md:text-xl rounded-2xl gap-2.5',
 };
 
 function Spinner({ size }: { size: ButtonSize }) {

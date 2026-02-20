@@ -94,19 +94,9 @@ export function Timeline({ steps, className }: TimelineProps) {
                     isOpen ? 'max-h-64 mt-4' : 'max-h-0',
                   )}
                 >
-                  <p className="text-neutral-600 text-sm leading-relaxed mb-3">
+                  <p className="text-neutral-600 text-sm leading-relaxed">
                     {step.description}
                   </p>
-                  <ul className="flex flex-wrap gap-2" aria-label={`Sujets du jour ${step.day}`}>
-                    {step.topics.map((topic) => (
-                      <li
-                        key={topic}
-                        className="text-xs bg-primary-100 text-primary-800 px-3 py-1.5 rounded-full font-medium"
-                      >
-                        {topic}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </button>
             </div>

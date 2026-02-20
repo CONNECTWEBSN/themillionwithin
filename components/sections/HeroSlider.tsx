@@ -11,11 +11,11 @@ const SLIDES = [
   {
     id: 1,
     image: 'https://ddsmedicalsenegal.com/assets/img/slider/1.jpg',
-    eyebrow: 'Formation en ligne · 5 jours',
+    eyebrow: 'Formation en ligne / en présentiel · 5 jours',
     title: 'PASSEZ DE L\'IDÉE',
     titleAccent: 'À LA CROISSANCE,',
     titleEnd: 'EN TOUTE CONFIANCE.',
-    subtitle: 'Rejoignez 496+ femmes qui ont lancé leur business sans renoncer à leur famille. Sans capital de départ.',
+    subtitle: 'Rejoignez 673 entrepreneurs qui ont lancé leur business sans renoncer à leur famille. Sans capital de départ.',
   },
   {
     id: 2,
@@ -29,8 +29,8 @@ const SLIDES = [
   {
     id: 3,
     image: 'https://ddsmedicalsenegal.com/assets/img/slider/3.jpg',
-    eyebrow: '496+ étudiantes · 10+ pays',
-    title: '496+ FEMMES ONT OSÉ.',
+    eyebrow: '673 entrepreneurs · partout dans le monde',
+    title: '673 ENTREPRENEURS ONT OSÉ.',
     titleAccent: 'C\'EST VOTRE TOUR',
     titleEnd: 'DE RÉUSSIR.',
     subtitle: 'Des femmes du Sénégal, France, Canada, Italie et partout dans la diaspora ont transformé leur vie. Vous êtes la suivante.',
@@ -120,7 +120,7 @@ export function HeroSlider() {
           {/* Titre principal */}
           <h1
             key={`title-${current}`}
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight text-white mb-4 sm:mb-6 animate-[fade-up_0.55s_ease_0.1s_both]"
+            className="text-[1.5625rem] sm:text-[1.8125rem] md:text-[2.1875rem] lg:text-[2.5625rem] xl:text-[3.3125rem] font-bold leading-tight text-white mb-4 sm:mb-6 animate-[fade-up_0.55s_ease_0.1s_both]"
           >
             {slide.title}{' '}
             <span className="text-primary-400">{slide.titleAccent}</span>{' '}
@@ -130,7 +130,7 @@ export function HeroSlider() {
           {/* Sous-titre */}
           <p
             key={`subtitle-${current}`}
-            className="text-sm sm:text-base md:text-lg font-normal leading-relaxed text-white mb-6 sm:mb-8 md:mb-10 max-w-xl animate-[fade-up_0.6s_ease_0.2s_both]"
+            className="text-[1.1875rem] sm:text-[1.3125rem] md:text-[1.4375rem] font-normal leading-relaxed text-white mb-6 sm:mb-8 md:mb-10 max-w-xl animate-[fade-up_0.6s_ease_0.2s_both]"
           >
             {slide.subtitle}
           </p>

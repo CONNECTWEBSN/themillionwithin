@@ -58,7 +58,7 @@ export function CountdownSection() {
         <p className="text-neutral-700 font-medium mb-6">
           {NEXT_SESSION.label} • {NEXT_SESSION.timezones.dakar} Dakar / {NEXT_SESSION.timezones.paris} Paris / {NEXT_SESSION.timezones.newYork} New York
         </p>
-        <Button href="/inscription" variant="cta" size="lg">
+        <Button href="/inscription" variant="cta" size="md">
           Réserver ma place maintenant
         </Button>
       </div>

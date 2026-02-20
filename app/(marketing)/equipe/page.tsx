@@ -38,7 +38,7 @@ const VALUES = [
     icon: <Shield className="w-6 h-6" />,
     color: 'from-secondary-400 to-primary-500',
     title: 'Intégrité',
-    description: "Nous tenons nos promesses. Notre garantie satisfaite ou remboursée en est la preuve.",
+    description: "Nous tenons nos promesses et nous engageons à vous accompagner avec intégrité.",
   },
   {
     icon: <Globe2 className="w-6 h-6" />,
@@ -53,7 +53,15 @@ const HISTORY_MILESTONES = [
   { year: '2018', title: '100 femmes formées', description: 'Le cap symbolique des 100 premières entrepreneuses accompagnées est atteint.' },
   { year: '2021', title: 'Expansion internationale', description: 'La formation s\'étend à la diaspora africaine en Europe et en Amérique du Nord.' },
   { year: '2024', title: '400+ étudiantes', description: 'Plus de 400 femmes ont lancé leur business grâce à la méthode Million Within.' },
-  { year: '2026', title: 'Aujourd\'hui', description: '496+ étudiantes, 319 business créés, présentes dans 10+ pays.' },
+  {
+    year: '2026',
+    title: 'Aujourd\'hui',
+    description: [
+      'Plus de 500 000 000 FCFA de chiffre d\'affaires cumulé, généré par les entreprises créées.',
+      'Plus de 280 entreprises formées en Afrique, Europe et Amérique.',
+      'Plus de 673 entrepreneurs accompagnés.',
+    ],
+  },
 ];
 
 export default function EquipePage() {
@@ -68,8 +76,8 @@ export default function EquipePage() {
         breadcrumbs={[{ label: 'Accueil', href: '/' }, { label: 'Notre équipe' }]}
         size="md"
       >
-        <Button href="/formation" variant="cta" size="lg"
-          icon={<ArrowRight className="w-5 h-5" />} iconPosition="right">
+        <Button href="/formation" variant="cta" size="md"
+          icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
           Découvrir la formation
         </Button>
       </HeroMinimal>
@@ -81,7 +89,7 @@ export default function EquipePage() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <Badge variant="brand" className="mb-4">Notre mission</Badge>
-                <h2 id="mission-title" className="text-h1 text-neutral-900 mb-6">
+                <h2 id="mission-title" className="text-2xl lg:text-3xl font-bold leading-snug text-neutral-900 mb-6">
                   Aider les femmes à bâtir{' '}
                   <span className="text-primary-500">une entreprise prospère</span>{' '}
                   sans renoncer à leur famille.
@@ -101,8 +109,8 @@ export default function EquipePage() {
               {/* Stats de confiance */}
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { value: 496, suffix: '+', label: 'Femmes formées', icon: '👩‍💼' },
-                  { value: 319, suffix: '', label: 'Business créés', icon: '🏢' },
+                  { value: 673, suffix: '+', label: 'Entrepreneurs formés', icon: '👩‍💼' },
+                  { value: 500, suffix: ' M ', label: 'Chiffre d\'affaires cumulé', suffixSmall: 'FCFA', icon: '📈' },
                   { value: 10, suffix: ' ans', label: "D'expérience", icon: '⭐' },
                   { value: 10, suffix: '+', label: 'Pays représentés', icon: '🌍' },
                 ].map((stat) => (
@@ -111,6 +119,9 @@ export default function EquipePage() {
                       <span className="text-3xl mb-2 block" aria-hidden>{stat.icon}</span>
                       <p className="font-heading font-black text-3xl text-primary-600 mb-1">
                         <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                        {'suffixSmall' in stat && stat.suffixSmall && (
+                          <span className="text-lg font-normal"> {stat.suffixSmall}</span>
+                        )}
                       </p>
                       <p className="text-sm text-neutral-600 font-medium">{stat.label}</p>
                     </div>
@@ -128,7 +139,7 @@ export default function EquipePage() {
           <div className="container mx-auto px-5">
             <div className="text-center mb-16">
               <Badge variant="brand" className="mb-4">L&apos;équipe</Badge>
-              <h2 id="team-title" className="text-h1 text-neutral-900">
+              <h2 id="team-title" className="text-2xl lg:text-3xl font-bold leading-snug text-neutral-900">
                 Une équipe{' '}
                 <span className="text-primary-500">dynamique et passionnée</span>
               </h2>
@@ -220,7 +231,7 @@ export default function EquipePage() {
           <div className="container mx-auto px-5">
             <div className="text-center mb-14">
               <Badge variant="brand" className="mb-4">Nos valeurs</Badge>
-              <h2 id="values-title" className="text-h1 text-neutral-900">
+              <h2 id="values-title" className="text-2xl lg:text-3xl font-bold leading-snug text-neutral-900">
                 Ce qui nous guide{' '}
                 <span className="text-primary-500">chaque jour</span>
               </h2>
@@ -250,7 +261,7 @@ export default function EquipePage() {
           <div className="container mx-auto px-5">
             <div className="text-center mb-14">
               <Badge variant="brand" className="mb-4">Notre histoire</Badge>
-              <h2 id="history-title" className="text-h1 text-white">
+              <h2 id="history-title" className="text-2xl lg:text-3xl font-bold leading-snug text-white">
                 10 ans de passion,{' '}
                 <span className="text-primary-400">d&apos;impact et de croissance</span>
               </h2>
@@ -267,7 +278,13 @@ export default function EquipePage() {
                       <span className="text-primary-400 font-bold text-sm font-heading">{milestone.year}</span>
                       <h3 className="font-heading font-bold text-white">{milestone.title}</h3>
                     </div>
-                    <p className="text-base font-normal leading-relaxed text-neutral-500 text-justify">{milestone.description}</p>
+                    {Array.isArray(milestone.description) ? (
+                      milestone.description.map((line, j) => (
+                        <p key={j} className="text-base font-normal leading-relaxed text-neutral-500 text-justify mb-2 last:mb-0">{line}</p>
+                      ))
+                    ) : (
+                      <p className="text-base font-normal leading-relaxed text-neutral-500 text-justify">{milestone.description}</p>
+                    )}
                   </li>
                 ))}
               </ol>
@@ -279,15 +296,14 @@ export default function EquipePage() {
       {/* ─── CTA ───────────────────────────────────────────────── */}
       <section className="py-16 bg-primary-50 border-t border-primary-100">
         <div className="container mx-auto px-5 text-center">
-          <h2 className="text-h1 text-neutral-900 mb-4">
-            Rejoignez notre communauté de{' '}
-            <span className="text-primary-500">femmes qui réussissent</span>
+          <h2 className="text-2xl lg:text-3xl font-bold leading-snug text-neutral-900 mb-4">
+            Rejoignez notre communauté
           </h2>
           <p className="text-neutral-600 mb-8 max-w-xl mx-auto">
             Notre équipe vous attend pour vous accompagner dans votre transformation entrepreneuriale.
           </p>
-          <Button href="/inscription" variant="cta" size="lg"
-            icon={<ArrowRight className="w-5 h-5" />} iconPosition="right">
+          <Button href="/inscription" variant="cta" size="md"
+            icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
             Commencer ma transformation
           </Button>
         </div>
