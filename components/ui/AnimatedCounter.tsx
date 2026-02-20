@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 
 interface AnimatedCounterProps {
-  end: number;
+  end?: number;
+  value?: number; // accepte aussi "value"
   duration?: number;
   suffix?: string;
   prefix?: string;
@@ -12,11 +13,15 @@ interface AnimatedCounterProps {
 
 export function AnimatedCounter({
   end,
+  value,
   duration = 2000,
   suffix = '',
   prefix = '',
   className = '',
 }: AnimatedCounterProps) {
+  // On prend value si elle existe, sinon end
+  const finalValue = value ?? end ?? 0;
+
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
@@ -48,10 +53,10 @@ export function AnimatedCounter({
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / duration, 1);
 
-      // Easing function: easeOutExpo
-      const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      
-      setCount(Math.floor(easeOutExpo * end));
+      const easeOutExpo =
+        progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+
+      setCount(Math.floor(easeOutExpo * finalValue));
 
       if (progress < 1) {
         animationFrame = requestAnimationFrame(animate);
@@ -61,11 +66,13 @@ export function AnimatedCounter({
     animationFrame = requestAnimationFrame(animate);
 
     return () => cancelAnimationFrame(animationFrame);
-  }, [isVisible, end, duration]);
+  }, [isVisible, finalValue, duration]);
 
   return (
     <span ref={ref} className={className}>
-      {prefix}{count.toLocaleString('fr-FR')}{suffix}
+      {prefix}
+      {count.toLocaleString('fr-FR')}
+      {suffix}
     </span>
   );
 }
